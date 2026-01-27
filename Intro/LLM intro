@@ -1,0 +1,70 @@
+(LLM) Large Language Model
+
+-Are functions that map text to text. Given an input string of text, a large language model predicts the text that should come next.
+-They do this by reading a large amount of existing text and learning how words tend to appear in context with other words, and uses what has learned o predict the next most likely word taht might appear in response to a user request, and each subsequent word after that.
+
+HOW TO CONTROL A LARGE LANGUAGE MODEL 
+
+-All inputs in the LLM the far most important one is the text prompt to be used.
+-LLM can be prompted to produce the desired output in many ways;
+    Instruction
+        Tell the model what you want with a detailed description.
+    Completion
+        Induce the model to complete the beginning of what you want 
+    Scenario 
+        Give the model a situation to play out 
+    Demonstration 
+        Show the model what you want, with either:
+            A few examples in the prompt.
+            Many hundreds or thousands of examples for fine tuning      
+
+
+EXAMPLES;
+    INSTRUCTION PROMPT
+
+Extract the name of the author from the quotation below.
+
+“Some humans theorize that intelligent species go extinct before they can expand into outer space. If they're correct, then the hush of the night sky is the silence of the graveyard.”
+― Ted Chiang, Exhalation
+
+    COMPLETION PROMPT 
+
+“Some humans theorize that intelligent species go extinct before they can expand into outer space. If they're correct, then the hush of the night sky is the silence of the graveyard.”
+― Ted Chiang, Exhalation
+
+The author of this quote is
+
+    SCENARIO PROMPT 
+
+Your role is to extract the name of the author from any given text
+
+“Some humans theorize that intelligent species go extinct before they can expand into outer space. If they're correct, then the hush of the night sky is the silence of the graveyard.”
+― Ted Chiang, Exhalation
+
+    DEMONSTRATION PROMPT 
+
+Quote:
+“When the reasoning mind is forced to confront the impossible again and again, it has no choice but to adapt.”
+― N.K. Jemisin, The Fifth Season
+Author: N.K. Jemisin
+
+Quote:
+“Some humans theorize that intelligent species go extinct before they can expand into outer space. If they're correct, then the hush of the night sky is the silence of the graveyard.”
+― Ted Chiang, Exhalation
+Author:
+
+
+MORE PROMPTING ADVICE 
+-In general, the input prompt is the best lever for improving models outputs.You can try tricks like;
+
+    Be more specific 
+           eg if you want the output to be a comma seperated list, ask it  to return a comma seperated list.
+
+    Provide context 
+            Help the model understand the bigger picture of your request.This could include some background information, example/demonstrations of what you want or explaining the purpose of your task.
+
+    Ask the model to answer as if it was an expert
+            Explicitly asking the model to produce high quality output or output as if it was written by an expert can induce the model to give higher quality answers that it thinks an expert would write.
+
+    Prompt the model to write down the series of steps explaining its reasoning
+            If understanding the why behind an answer is important, prompt the model to include its reasoning.this can be done by simply adding a line like "Lets think step by step" before each answer.

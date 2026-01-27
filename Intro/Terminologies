@@ -1,0 +1,17 @@
+A prompt
+    - is sometimes reffered to as context, is the text provided to a model before it begins generating output.
+     bvIt guides the model to explore a particular area of what it has learned so that the output is relevant to your goals.
+
+    HIDDEN PROMPTS
+
+    In applications where a user is interacting with a model dynamically, such as chatting with the model, there will typically be portions of the prompt that are never intended to be seen by the user. These hidden portions may occur anywhere, though there is almost always a hidden prompt at the start of a conversation.
+
+    Typically, this includes an initial chunk of text that sets the tone, model constraints, and goals, along with other dynamic information that is specific to the particular session – user name, location, time of day, etc...
+
+TOKENS
+
+    Different models will use different tokenizers with different levels of granularity. You could, in theory, just feed a model 0’s and 1’s – but then the model needs to learn the concept of characters from bits, and then the concept of words from characters, and so forth. Similarly, you could feed the model a stream of raw characters, but then the model needs to learn the concept of words, and punctuation, etc… and, in general, the models will perform worse.  
+
+PROMPT ENGINEERING
+
+    Is the art and science of designing, testing, and refining input instruction (prompts) to guide generative AI models--such as LLMs, image generators, or code assistants--to produce accurate, relevant, and high-quality outputs.
