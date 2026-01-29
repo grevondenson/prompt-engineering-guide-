@@ -1,0 +1,28 @@
+            CAPABILITIES
+
+    Information synthesis
+            LLM excel in summarizing complex reports, extracting key points from long-form text, and sythesizing from fragmented databases.
+    Code assistance
+            They are proficient at generating and debugging code, which significantly speeds up software development workflows.
+    Context generation 
+            Modern models can produce high quality articles, marketing copy, and documentation that maintain a concictent brand voice at scale.
+    Domain specialization 
+            Through fine-tuning and Retrival-augmented generation (RAG), LLMs can provide specialized support in  fields like law and health care. 
+    Multimodal reasoning 
+            Advanced versions can now process and reason across text,images and audio simultaneously, enabling more natural and complex human computer interactions.
+
+
+            LIMITATIONS 
+
+    Hallucinations
+            LLMs often produce plausible sounding but factually incorrect information, especially when they lack the necessary data to answer a query. 
+    Logical & Math stuggles
+            While improving, many models still falter on multi-step reasoning tasks or complex mathematical problems where one small error cascades through the solution.
+    Knowledge
+            most models are stastically frozen at their last training date, meaning they are unaware of recent events unless connected to real-time search tools.
+    Context & memory constraints
+            Models have a fixed context window and can lose track of information in very long conversations, often treating each interactions as an isolated event.
+    Inherent bias 
+            Beccause they learn from internet data, LLMs can produce and amplify societal biases, requiring careful monitoring and saftey filters.
+    Lack of genuine understanding 
+            LLMs simulate empathy and reasoning through advance autocomplete; they do not posses consciousness or a true understanding of the world.

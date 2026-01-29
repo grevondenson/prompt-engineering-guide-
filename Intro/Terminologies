@@ -1,6 +1,6 @@
 A prompt
     - is sometimes reffered to as context, is the text provided to a model before it begins generating output.
-     bvIt guides the model to explore a particular area of what it has learned so that the output is relevant to your goals.
+    It guides the model to explore a particular area of what it has learned so that the output is relevant to your goals.
 
     HIDDEN PROMPTS
 

@@ -1,0 +1,38 @@
+        LLM (LARGE LANGUAGE MODEL)
+
+This are AI systems trained on vast text data to understand, generate, and summarise human-like language, powering toools like ChatGpt.
+Using transformer architecture, they predict the next word in sequence based on patterns.
+
+
+    KEY LLM USES
+        coding assistance 
+        content generation 
+        translation 
+        analysis
+        
+CAPABILITIES & APPLICATIONS
+    Content Generation 
+        creating articles 
+        reports
+        marketing copy 
+    Contextual Understanding 
+        summarizing long documents 
+        identfying trends 
+    Coding and debugging
+        software development 
+        web development 
+        bug bounty 
+    Interaction 
+        chatbots
+        virtual assistants 
+
+
+LLM EXAMPLES 
+    GPT (openAI)
+    Gemini
+    Claude (Anthropic)
+    LLama
+    Grok (XAI)
+    Mistral
+    Deepseek
+

@@ -1,0 +1,23 @@
+LLMs operate by processing language as tokens (sub-word units) utilizing a context window as "short term memory" to predict subsequent text.
+
+The context window includes all input (prompts, instructions, history) and output tokens, determine how much information the model can process at once.
+
+        TOKENS
+        Are the basic building blocks-words, or punctuation-that LLMs convert into numerical vectors to process text.
+
+        CONTEXT WINDOW 
+        Is the maximum number of tokens an LLM can see or  process in a single interaction.
+
+        WORKING MEMORY 
+        It functions as short-term memory, enabling the model to retain conversation history or analyze documents.
+
+        CAPACITY
+        Modern LLMs range from 8000 to over 128000 tokens.
+
+
+KEY COMPONENTS OF A CONTEXT WINDOW 
+    System Instructions
+    User input (prompt)
+    Conversation history 
+    Retrived data 
+    Output tokens
