@@ -1,0 +1,16 @@
+The zero-shot prompt directly instructs the model to perform a task without any additional examples to steer it.
+We tried a few zero-shoot examples in the previous section.
+Here is an example;
+    
+    Prompt 
+        Classify the text into neutral, negative or postive.
+        Text: I think the vacation is okay.
+        Sentiment:
+
+    Output
+        neutral
+
+Note that in this prompt above we didn't provide the model with any examples of text alongside their classifications, the LLM already understands "sentiment"-- that's the zero-shot capabilities at work.
+
+When zero-shot doesn't work, it's recommended to provide demonstrations or examples in the prompt which leads to few-shot prompting.
+in the next section, we demonstrate few-shot prompting.
