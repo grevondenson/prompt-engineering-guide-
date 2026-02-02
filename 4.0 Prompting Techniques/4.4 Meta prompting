@@ -1,0 +1,36 @@
+It is an advance prompting technique that focuses on structral and syntactical aspects of tasks and problems rather than their specific content details.
+The goal is to construct more abstract, structured way of interacting with LLM, emphasizing the form and pattern of information over traditional content centric methods.
+
+    KEY CHARACTERISTICS 
+
+    Structured-oriented
+        Uses syntax as a guiding template for the expected response or solution.
+
+    Syntax-focused 
+        Uses syntax as a guiding template for the expected response or solution.
+
+    Abstract examples
+        Employs abstracted examples as frameworks, illustrating the structure of problems and solutions without focusing on specific details.
+
+    Versatile 
+        Applicable across various domains, capable of providing structured responses to a wide range of problems.
+
+    Categorical approach 
+        Draws from type theory to emphasize the categorization and logical arrangement of components in a prompt.
+
+
+Advantages of meta promting over few shot prompting include;
+    Token efficiency 
+        Reduce the number of tokens required by focusing on structure rather than detailed content.
+
+    Fair comparison 
+        Provides a more fair approach for comparing different problem-solving models by minimizing the influence of specific examples.
+
+    zero-shot efficiency
+        Can be viewed as a form of zero-shot prompting, where the influence of specific example is minimized.
+
+
+Applications 
+    By focusing on the structural patterns of problem-solving, Meta prompting offers a clear roadmap for navigating complex topics, enhacing the reasoning capabilities of LLMs across various domains.
+    Applications where meta prompting can be beneficial include but not limited to complex reasoning tasks, mathematical problem-solving, coding challenges, theoretical queries.
+    
