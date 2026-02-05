@@ -1,0 +1,29 @@
+        APE
+
+It is a framework of automatic instruction generation and selection.
+The instruction generation problem is framed as natural language synthesis addressed as a black-box optimization problem using LLMs to generate and search over candidate solutions.
+
+The first step involves a LLM that is given output demonstration to generate instruction candidates for a task.
+These candidates solutions will guide the search procedure.
+The instructions are executed using a target model, and then the most appropiate instruction is selected based on computed evaluation scores.
+
+APE discovers a better zero-shot CoT prompt than the human engineered "let's think step by step" prompt.
+
+        KEY TECHNIQUES
+            Meta-prompting 
+            Using an LLM to act as an "expert prompt engineering" by giving it high-level instructions to design better task-specific prompts.
+
+            Optimizationby prompting (OPRO)
+            A strategy where thw LLM analyzes a history of previous prompts and their scores (an "optimization trajectory") to "hill-climb" toward better solution.
+
+            Gradient-based (soft) prompting
+            Optimizing continuous vectors (embeddings) rather than discrete text, often using techniques like prompt tuning.
+
+            Exemplar selection 
+            Automatically finding the most effective "few-shot" examples to include in a prompt to guide the model's behaviour.
+
+        
+        WHY IT MATTERS ?
+            Superior performance 
+            Efficiency as it reduces development time
+            Discovery of a new instruction technique

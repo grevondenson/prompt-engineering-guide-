@@ -1,0 +1,24 @@
+A framework that uses a small, tunable policy model  to generate specifc hints or cues-called directional stimuli that guide a frozen LLM toward a desired output.
+Instead of a user writting a long, static instruction, the policy model creates instance-specific keywords or thematic anchors that nudge the LLM in a certain direction.
+
+HOW IT WORKS
+    Policy model
+         A smaller model trained via Supervised finr tuning or reignforcement learning to producr effective hints.
+
+    Directional Stimulus
+        discrete tokens (keywords, hints, or instructions) that serve as "GPS" markers for the target LLM.
+
+    Target LLM
+        A "black-box" model that receives the stimulus and generates the final response.
+
+
+KEY BENEFITS 
+    Fine grained control
+        provides difrent influence over tone, format, and content relevance without retraining the large model.
+
+    Efficiency 
+        Optimizing a small policy model is computational cheaper than fine tuning a massive LLM.
+
+    Better performance 
+        Proved to outperform standard prompting in tasks like summarization and dialogue generation.
+        

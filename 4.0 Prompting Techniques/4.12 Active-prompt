@@ -1,0 +1,28 @@
+Active-prompt adapts to different task specific example (annotated with human-design CoT reasoning)
+It is a targeted optimization technique designed to enhance Chain of Thought reasoning.
+It focuses on exemplar selection-identifying exactly which few shot examples will most effectively "teach" the model to solve complex tasks.
+
+ACTIVE PROMPTING WORKFLOW
+    uncertainity estimation 
+        Query- The model is prompted multiple times with a pool of unlabeled questions using zero-shot CoT.
+
+    Selection 
+        Identify - Questions with the highest disagreement (widely varying answers across the attempts) are flagged as "uncertain"
+
+    Annotation 
+        Human-in-the-loop - Humans manually annotate only these high-uncertainty questions to provide correct step-by-step reasoning (exemplars).
+
+    Inference 
+        Deploy - These "hard-won" exemplars are added to the final prompt as few-shot examples for all future tasks.
+
+
+ADVANTAGES
+    Annotation, saving massive human resources
+    Task-specific adaptation
+    Superior performance as it outperforms standard CoT and self consistency methods
+
+
+APE VS ACTIVE PROMPTING 
+    APE automates the instruction text (the"recipe") using a second LLM as the "engineer"
+    Active prompting, Automates the selection of example (the"ingredients") and uses human feedback to refine them based on model uncertainity.
+    

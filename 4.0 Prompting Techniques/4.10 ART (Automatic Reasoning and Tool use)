@@ -1,1 +1,30 @@
- 
+ ART work as follows;
+    Given a new task, it select demonstrations of multi-step reasoning and tool use from a task library.
+    At test time, it pauses generation whenever external tools are called, and integrate their output before resuming generation
+
+ART encourages the model to generalize from demonstrations to decompose a new task and use tools in appropiate places, in a zero-shot fashion.
+In addition, ART is extensible as it also enables humans to fix mistake in the reasoning steps or add new tools by simply updating the task  and tool libraries.
+
+ART substantially improves over few-shot prompting and automatic CoT on unseen tasks in the BigBench and MMLU benchmarks, and exceeds performance of hand-crafted CoT prompts when human feedback is incorporated 
+
+        KEY ASPECTS OF ART
+
+        System mechanism 
+            ART decomposetsks into intermidiate steps which are formulated as code or natural language, then pausing generation to integrate output from external tols.
+
+        Tool integration 
+            The system supports, integrating, external tools such as, web search, calculators, or other APIs to solve problems beyond the model core knowledge.
+             
+        Performance 
+            ART provides improved results over standard few shot, prompting and automatic CoT by allowing models to dynamically adapt to new tasks.
+
+        Extensibility 
+            Humans can interven by correcting errors in the reasoning steps or by adding new tools to the library which significantly improves performance.
+
+
+        USE CASE 
+            Typical applications 
+            information retrival 
+            search engines
+            Interacting with external data sources
+            
