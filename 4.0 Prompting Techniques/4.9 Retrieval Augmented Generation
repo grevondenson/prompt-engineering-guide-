@@ -1,0 +1,24 @@
+(RAG)
+
+Meta Ai introduced the method called Retrival Augmented Generation RAG
+RAG combines an information retrival component with a text generator model.
+RAG can be fine tuned and it's internal knowledge can be modified in an efficient manner and without needing retrainig of the entire model.
+RAG takes an input and retrives a set of relvant/supporting documents given a source (e.g Wikipedia)
+The documents are concatenated as context with the original inpput prompt and fed to the next generator which produces the final output.
+This makes RAG adaptive for situations where facts could evolve over time.
+This is very useful as LLMs parametic knowledge is static.
+RAG allows language models to bypass retraining, enabling acess to the latest information for generating reliable outputs via retrival-based generation.
+
+        BENEFITS
+            Accuracy
+                Reduces hallucinations by grounding responses 
+            Cost Effective
+                Avoids the retrainig of LLMs
+            Context Aware 
+                Enables chatbots to answeer questions based on real time data 
+
+        USE CASE 
+            Enterprise search bots 
+            Customer service agents
+            Query policies
+            Assistance to updating documentations 
