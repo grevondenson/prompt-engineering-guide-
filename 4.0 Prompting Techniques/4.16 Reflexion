@@ -1,0 +1,52 @@
+It is a framework to reinforce language-based aget sthrough linguistic feedback.
+Reflexion is a new paradigm for verbal reinforcement that parameterizes a policy as ab agent's memory encoding paired with a choice of LLM parameters.
+At a high level, reflexion xonverts feedback (either free-form language or scalar) from the enviroment into linguistic feedback, also reffered to as self-reflection, which is provided as context for an LLM agent in the next episode.
+This helps the agent rapidly and effectively learn from prior mistakes leading to performance improvements on many advanced tasks.
+
+In summary, the key steps of the Reflexion process are 
+    Define a task
+    Generate a trajectory 
+    Evaluate 
+    perform reflection
+    Generate next trajectory 
+
+RESULTS 
+
+Reflexion significantly outperforms all baseline approaches over several learning steps.
+For reasoning only and when adding an episodic memory consisting of the most recent trajectory, reflexion + CoT outperforms CoT only and CoT with episodic memory respectively.
+Reflexion generally outperforms the previous state-of-the-art approaches on python and Rust code writting on MBPP, HumanEval, and Leetcode hard.
+
+    WHEN TO USE REFLEXION 
+
+        An agent needs to learn from trial and error 
+            Reflexion is designed to help agents improve their performance by reflecting on past mistakes and incorporating that kknowledge into future decisions.
+            This makes it well-suited for tasks where the agent needs to learn through trial and error, such as decision-making, reasoning and programming.
+
+        Traditional reinforcement learning methods are impractical 
+            Traditional RL methods often require extensive training data and expensive model fine-tuning.
+            Reflexion offers a lightweight alternative that doesn't require fine-tuning the underlying language model, making it more efficient in terms of data and compute resources.
+
+        Nuanced feedback is required 
+            It utilizes verbal feedback, which can be more nuanced and specific than scalar rewards used in traditional RL.
+            This allows the agent to better understand its mistake and make more targeted improvements in subsequent trials.
+
+        Interpretability and explicit memory are important
+            Reflexion provides a more interpretable and explicit form of episodic memory compared to traditional RL methods.
+            The agents self-reflection are stored in its memory, allowing for easier analysis and understanding of its learning process.
+
+
+Reflexion is effective in the following tasks:
+    Sequential decision0-making 
+    reasoning
+    Programming 
+
+Limitations of reflexion 
+    Reliance on self-evaluation capabilities
+        It relies on the agent's ability to accurately evaluate its performance and generate useful self-reflection 
+        This can be challenging, especially for complex tasks but it's expected that reflexion gets better over time as models keep improving in capabilities.
+    Long term memory constrains
+        It makes use of a sliding window with maximum capacity but more complex tasks it may be advantageous to use advanced structures such as vector embedding or SQL databases.
+    Code generation limitations 
+        There are limitations to test-driven development in specifying accurate input-output mappings (e.g non-deterministic generator function and function outputs influenced by hardware).
+        
+

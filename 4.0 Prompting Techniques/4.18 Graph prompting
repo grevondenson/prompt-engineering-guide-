@@ -1,0 +1,31 @@
+It is a new framework for graphs to improve performance on dowmstream tasks.
+It is an advanced ai technique that uses graph-structured data where information is organized as nodes (entities) and edges (relationships) to guide model's reasoning.
+This approach is used in two distinct ways 
+    Graph-of-thought which structures the AI's internal reasoning process as a non-linear graph.
+    Graph Prompt learning which adapts pre-trained graph models to new tasks without full retraining.
+
+    GRAPH OF THOUGHT (GOT) REASONING 
+    It allows the model to explore multiple reasoning paths simultaneously, backtrack to fix errors, and merge insights from different thoughts.
+        Thought transformation 
+            Thoughts can be aggregated (combined), refined (improved through self-connection), or used to generate multiple new branches.
+        Key modules 
+            A controller manages the execution plan, while a scorer evaluates the quality of each "thought" node to rank the most relevant ones.
+        Efficiency 
+            GoT often reduces latency and error in complex tasks like sorting, keyword counting, oc set intersection.
+
+    GRAPH PROMPT LEARNING (GNNs)
+    It is a pre train, prompt, and predict paradigm.
+    Instead of fune-tuning the entire model for every new task, lightweight trainable prompts are added to bridge the gap between pre-training and downstream objectives.
+        Data level 
+            Modifies the input graph by adding prompt vectors to node features or inserting prompt nodes into the structure.
+        Representation level 
+            Applies learnable prompts directly to the output or hidden layers of the model to filter relevant proir knowledge.
+        Task level 
+            Reformulates downstream tasks (like node classification) to match the pre training task (like link prediction)
+
+    
+    KEY APPLICATIONS
+        Knowledge graphs 
+        Biological networks
+        Recommendation Systems 
+        Complex Logistics

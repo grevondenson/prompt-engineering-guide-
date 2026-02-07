@@ -1,0 +1,36 @@
+Traditional CoT focuses on the language modality. In contast, Multimodal CoT incoperates text and vision into a two stage frameworl.
+The first step involves rationale generation based on multimodal information.
+This followed by the second phase, answer inference, which leverages the infomative generated rationales.
+
+M-CoT prompting extends the standard CoT technique by incorporating information from multiple data types such as text, images and audio into a step-by step reasonng process.
+
+    HOW IT WORKS 
+    THE TWO STAGE FRAMEWORK 
+
+    Most M-CoT systmes follow a structured pipeline to prevent "hallucinations" (generating incorrect logic)
+        Rationale generation 
+            The model analyzes a multimodal input (e.g a question + a diagram ) and generates a textual rationale or step by step explanation grounded in the visual evidence.
+
+        Answer Inference 
+            The model uses its own generated rationale, alongside the priginal text and image, to determne the final answer.
+
+    
+    CORE APPLICATIONS 
+        Scientific reasoning 
+            Analyzing a physics diagram and explain the forces at play step by step 
+        Healthcare 
+            Comparing a patients medical history with an X ray to diagnose a condition 
+        Technical support 
+            Analyzing a photo of a broken device and generating a troubleshooting sequence.
+        Autonomous systems 
+            Correlating camera feeds with navigation data to plan safe driving routes.
+
+
+    KEY BENEFITS AND LIMITATIONS 
+    BENEFITS 
+        It significantly imporves accuracy on benchmarks like ScienceQA and provides a traceable reasoning path that users can verify.
+
+    LIMITATIONS 
+        It requires more computational tokens, which increases latency and cost. Additionally, small models may still struggle with overthinking simple visual cues.
+
+        
