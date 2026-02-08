@@ -1,0 +1,52 @@
+AI agents require three fundamental capabilities to effective tackle complex tasks:
+planning abiities, tool utilization, memory managment
+Lets dive on how this components work together.
+
+    PLANNING THE BRAIN OF AGENT 
+
+    At the core of any effective AI agent is its capability, powered by LLMs
+    Modern LLMs enable several cruicial planning functions:
+        Task decomposition through CoT reasoning
+        Self reflection on past actions and information 
+        Adaptive learning to improve future decisions 
+        Critical analysis of current progress
+
+    While current LLM planning capabilities aren't perfect, they're essential for task completion.
+    Without robust planning abilities, an agent cannot effectively automate complex tasks, which defeats its primary purpose.
+
+
+    TOOLS UTILIZATION: EXTENDING THE AGENTS CAPABILITIES 
+
+    The second most critical component is an agent's ability to interface with external tools.
+    A well-designed agent must not only have access to various tools but also understand when and how to use them appropiately.
+    Common tools include:
+        code interpreters and execution enviroments 
+        Web search and scraping utilities 
+        Mathematical calculators 
+        image generation systems
+
+    These tools enable the agent to execute its planned actions, turning abstract startegies into concrete results.
+    The LLMs ability to understand tool selection and timing is crucial fo handling complex tasks effectively.
+
+
+    MEMORY SYSTEMS: RETAINING AND UTILIZING INFORMATION 
+
+    This is the third essential component, which comes in two primary forms:
+        Short-term (working) memory
+            functions as a buffer for immediate context 
+            Enables in context learning 
+            Sufficient for most task completions 
+            Helps maintain continuity during task iteration 
+
+        Long-term memory 
+            Implemented through external vector stores 
+            Enables fast retrieval of historical information
+            Valuable for future task completion 
+            Less commonly implemented but potentially crucial for future developments
+
+
+    Memory systems allow agents to store and retrive information gathered from external tools, enabling improvement and building upon previous knowledge.
+    The synergy between planning capabilities, tool utilization, and memory systems forms the foundation of effective AI agents.
+    While each component has its current limitations, understanding these core capabilities is crucial for developing aand working with AI agents.
+    As the technology evolves, we may see new memory types and capabilities emerge, but these three pillars will likely remain fundamental to AI agent architecture.
+    

@@ -1,0 +1,63 @@
+In his section, we provide an overview of LLM-based agents, including definations, common design patterns, tips, use cases and applications.
+
+AI AGENTS - Are autonomus software systems that use reasoning and tools to complete complex tasks on behalf of users.
+Unlike traditional chatbots that merely respond to prompts, agents can plan multi-step workflows, access exernal software, and adapt their behaviour based on real-time feedback.
+
+    CORE COMPONENTS 
+
+A functional AI agent is generally composed of three primary modules:
+
+    THE BRAIN LLM
+        Serve as the reasoning engine to process information and make decisions.
+    MEMORY 
+        Short-term memory tracks current task progress, while long-term memory (often via vector database) allows the agent to recall past interactions and specialized knowledge.
+    TOOLS (ACTION LAYER)
+        Agents interact with the world through APIs, executing code, browsing the web, or using apps like gmail and slack to perform physical or digital actions.
+        
+
+    WHY BUILD WITH AGENTS?
+
+While LLMs excel at simple, narrow tasks like translation or email generation, they fall short when dealing with complex, broader tasks that require multiple steps, planning, and reasoning.
+These complex tasks often necessitate  access to external tools and information beyond the LLM's knowledge base.
+
+for example;
+    Developing a marketing strategy might involve reasearching competitors, analzing market trends, and acessing company-specific data.
+These actions necessitatereal-world information, the last insights, and internal company data, which a standalone LLM might not have access to.
+AI agents bridge this gap by combining the capabilities of LLMs with additional features such as memory, planning and external tools.
+
+    REAL-WORLD USE cases
+
+    Enterprise
+        Companies like goldman sachs use agents to trade accounting and client onboarding.
+    Software engineering
+        Agents can autonomously write code, conduct unit tests and perform quality assurance.
+    Customer support 
+        Platforms deploy agents to resolve customer issues without human intervention.
+    Gig economy
+        New platforms allow AI agents to hire humans for physical tasks, such as taking photos in the real world.
+    Booking 
+        Assiting with travel arrangements and event planning.
+    Reasearch 
+        Conducting in-depth investigations across various domains, such as legal, finance and health.
+    Eccomerce applications 
+        Facilitate online shopping experiences, mannaging orders and providing personalized recommendations.
+
+    TYPES OF AI AGENTS 
+
+    Simple reflex
+        A thermostat turning on when it hits a set temprature.
+    Goal-based
+        A travel agent finding the cheapest flight that fits your specific dates.
+    utility-based
+        A trading agent that chooses actions to maximize financial profit.
+    Multi-Agent systems
+        A team of specialised agents(e.g researcher, writer and editor) working together.
+
+
+    DEVELOPMENT ECOSYSTEM 
+        Frameworks 
+            Autogpt and Langchain for orchestration.
+        SDKs 
+            Claude agent SDK from anthropic and Azure AI for managed agent building 
+        Protocols 
+            MCP (model context protocol ) helps stardadise how agents connect to data and tools.
