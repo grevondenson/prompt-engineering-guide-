@@ -1,0 +1,138 @@
+Agentic systems represnt a paradigm shift in how we orchestrate LLMs and tools to accomplish complex tasks.
+This guide explores the fundamental distinction between AI workflows and AI agents, helping you understand when to use each approach in your AI applications.
+
+    WHAT ARE AGENTIC SYSTEMS ?
+
+They are categorized into 2 main types:
+
+    AI workflows 
+
+        AI workflows are systems where LLMs and tools are orchestarted through predefined code paths.
+        These systems follows a structured sequence of operations with explicit control flow.
+
+        Key characteristics 
+
+            Predefined steps and execution paths
+            High predictability and control
+            Well-defined tsk boundaries
+            Explicit orchestration  logic
+
+        When to use workflows
+
+            well defined tasks with clear requirements
+            scenarios requiring predictability and consistency
+            Tasks where you need explicit control over execution flow
+            production systems where reliaibility is critical 
+
+
+    AI AGENTS 
+
+        Are sytems where LLMs dynamically direct their own processes and tool usage, maintain autonomous control over how they accomplish tasks.
+
+        Key characteristics 
+
+            Dynamic decision making 
+            Autonomous tool selection and usage 
+            Reasoning and reflection capabilities
+            Self-directed task execution 
+
+        When to use Agents 
+
+            Open ended tasks with variable execution paths
+            Complex scenarios where the number of step is difficult to define upfront 
+            Task requiring adaptive reasoning
+            Situations where flexibility outweighs predictability
+
+    COMMON AI WORKFLOW PATTERNS
+
+        PROMPT CHAINING 
+
+        It involves breaking down a complex task into sequential LLM calls, Where each step's output feeds into the next.
+        Prompt chaining use cases:
+            content generation pipeline
+            Multi-stage document processing 
+            Sequential validation workflows
+
+        PATTERN ROUTING 
+
+        Routing directs requests to specialized LLM chains or agents based on query classification.
+        Routing use cases 
+            Customer support systems 
+            MUlti domain question answering 
+            Request prioritization and delegation 
+            resource optimization by routing to appropiate models 
+
+        Benefits;
+            Efficient resource utilization 
+            Specialized handling for diffrent query types 
+            Cost optimization through selesctive model usage 
+
+        PARALLELIZATION 
+
+        Executes multiple independent LLM operations simultaneously to improve efficiency.
+        Parallelization use case
+            Content moderation systems 
+            Multi criteria evaluation 
+            Concurrent data processing 
+            Independent verification Tasks
+
+        Advantages 
+            Reduced latency 
+            Better resource utilization 
+            Improved throughout 
+
+
+    AI AGENTS AUTONOMOUS TASK EXECUTION 
+
+    Ai agents combine LLMs autonomus desicion-making capabilities, enabling them to perform complex tasks through reasoning, reflection, and dynamic tool usage.
+    AI agent use cases 
+        Deep research systems 
+        Agentic RAG systems 
+        Coding agents 
+        Data analysis and processing 
+        Content generation and editing 
+        Customer support and assistance 
+        Interactive chatbots and virtual assistants 
+
+    Core components 
+
+    Here is a list of key components for building AI agents:
+    Tool Access 
+        Integration with external systems (google sheets, search APIs, databases)
+    Memory
+        Context retention across interactions for continuity 
+    Reasoning engine 
+        Decision making logic for tool selection and task planning 
+    Autonomy 
+        Self-directed execution without predefined control flow
+
+
+HYBRID APPROACHES 
+    Many production systems combine both approaches 
+
+    Work flows for structure 
+        use sworkflows for reliable, well defined components 
+    Agents for flexibilty 
+        Deploy agents for adaptive, complex desicion making 
+    Example 
+    A workflow routes request to specialized agents, each handling open-ended subtasks
+
+BEST PRACTICES 
+FOR AI WORKFLOWS 
+    Clear step definition
+    Error handling 
+    Validation gates 
+    Performnace Monitoring 
+
+FOR AI AGENTS 
+    Tool design 
+    Memory managment 
+    Guardrails 
+    Observability 
+    Iterative testing 
+
+
+CONCLUSION 
+
+Understanding the distinction between AI workflows and AI agents is crucial for building effective agentic systems. Workflows provide control and predictability for well-defined tasks, while agents offer flexibility and autonomy for complex, open-ended problems.
+The choice between workflows and agents—or a combination of both—depends on your specific use case, performance requirements, and tolerance for autonomous decision-making. By aligning your system design with task characteristics, you can build more effective, efficient, and reliable AI applications.
