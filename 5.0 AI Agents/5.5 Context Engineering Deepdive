@@ -1,0 +1,88 @@
+BUILDING A DEEP RESEARCH AGENT 
+
+Context engineering requires significant iteration and careful design decisions to build reliable agents 
+This guide takes a deep dive into the pratical aspects of context engineering through the development of a basic deep research agent, exploring some of the techniques and design patterns that improve agent reliablity and performance.
+
+The reality of context engineering 
+    Building effective ai agents requires substanial tuning of system prompts and tool definations.
+    The process involves spending hours iterating on :
+        System prompt design and refinement
+        Tool defination and usage instructions
+        Agent architecture and communictaion pattern 
+        Input/output specifications between agents 
+
+    don't underestimate the effort required for context engineering.
+    It's not a one-time task but an iterative process that significantly impacts agent reliablity and performance.
+
+AGENT ARCHITECTURE DESIGN 
+    Lets look at a basic research agent architecture
+    The initial architecture  connects the web search tool directly to the deep research agent. 
+    This design places too much burden on a single agent responsible for
+        Managing tasks (creating, updating, deleting)
+        saving information to memory 
+        Execution web searches 
+        Generating final reports 
+    Consequence of this design 
+        Context grew too long 
+        Agent forgot to execute web searches 
+        Task completion updates were missed 
+        Unreliable behavior across diffrent queries 
+
+THE IMPROVED MULTI AGENT ARCHITECTURE 
+    The solution involved seperating concerns by introducing a dedicated search worker agent 
+    Benefits of the multi agent design
+        Seperation of concerns
+            The parent agent (deep Research agent) Handles plannning and orchestration, while the search worker agent focuses exclusively on executing web searches
+        Improved reliablity
+            Each agent has a clear, focused resposibility, reducing the likelyhood of missed tasks or forgotten operations.
+        Model selection flexibility
+            Diffrent agents can use different language models optimized for their specific tasks 
+    
+SYSTEM PROMPT ENGINEERING
+    Here is the full sysytem prompt for the deep research agent we built in n8n
+
+        You are a deep research agent who will help with planning and executing search tasks to generate a deep research report.
+    
+        ## GENERAL INSTRUCTIONS
+        The user will provide a query, and you will convert that query into a search plan with multiple search tasks (3 web searches). You will execute each search task and maintain the status of those searches in a spreadsheet.
+        You will then generate a final deep research report for the user.
+        For context, today's date is: {{ $now.format('yyyy-MM-dd') }}
+        
+        ## TOOL DESCRIPTIONS
+        Below are some useful instructions for how to use the available tools. 
+        Deleting tasks: Use the delete_task tool to clear up all the tasks before starting the search plan. 
+        Planning tasks: You will create a plan with the search tasks (3 web searches) and add them to the Google Sheet using the append_update_task tool. Make sure to keep the status of each task updated after completing each search. Each task begins with a todo status and will be updated to a "done" status once the search worker returns information regarding the search task.
+        Executing tasks: Use the Search Worker Agent tool to execute the search plan. The input to the agent are the actual search queries, word for word. 
+        Use the tools in the order that makes the most sense to you but be efficient. 
+
+    Let's break it down into parts and discuss why each section is important 
+
+        High level agent defination 
+        The system prompt begins with a clear defination of agent's role 
+            You are a deep research agent who will help with planning and executing search tasks to generate a deep research report.
+
+        General Instructions 
+        Provide explicit instructions about the agents workflow 
+            The user will provide a query, and you will convert that queru into a search plan with mutiple search tasks ....
+
+        Providing Essential Context 
+        Current date information 
+            Including the current date is crucial for research agents to get up-to-date information
+                For context, today's date is ......
+            Why it matters 
+                LLMs typically have knowledge cutoffs months or years behind the current date 
+                Without current date context, agents often search for outdated information 
+                This ensures agents understand temporal context for queries like "latest news" or "recent developments"
+            in n8n, you can dynamically inject the current date using built-in functions with customizable formats 
+
+        Tool definations and usage instructions 
+        The importance of detailed tool descriptions 
+            Tool definitions typically appear in two places 
+            In the system prompt 
+                Detailed explanations of what tools do and when to use them 
+            In the actual tool implementation
+                Technical specifications and parameters 
+
+            
+
+

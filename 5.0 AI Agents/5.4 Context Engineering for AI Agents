@@ -1,0 +1,208 @@
+CONTEXT ENGINEERING 
+
+    It  is a critical practice for building reliable and effective AI agents.
+    This guide explores the importance of context engineering through a practical example of building a deep research agent.
+    It involves carefully crafting and refining the prompts, instructions and constraints that guide an AI agent's behaviour to achieve desired outcomes.
+
+WHAT IS CONTEXT ENGINEERING
+
+    It is the process of designing, testing and iterating on the contextual information provided to AI agents to shape their behaviour and improve task performance.
+    Unlike simple prompt engineering for single LLM calls, context engineering for agents involves (but not limited to);
+        System prompts that define agent behaviour and capabilities 
+        Task constrains that guide decision-making 
+        Tool descriptions that clarify when and how to use available functions/tools
+        Memory management for tracking state across multiple steps 
+        Error handling patterns for robust execution 
+
+
+BUILDING A DEEP RESEARCH AGENT: A CASE STUDY 
+
+The context engineering challange 
+    When building the first version of this agent system, the initial implementation revealed several beahvioural issues that required careful context engineering:
+
+    Issue 1: Incomplete Task execution 
+
+    Problem 
+        When runnning the agentic workflow, the orchestrator agent often create three search tasks but only executes searches for two of them, skipping the third task without eplicit justification.
+    Root cause 
+        The agent'system prompt lacked explicit constarins about task completion requirements.
+        The agent made assumption about which searches were necessary, leading to inconsistet behaviour.
+    
+    Solution: two approaches are possible 
+        Flexible approach 
+            Allow the agent to decide which searches are necessary, but requre explicit reasoning for skipped tasks
+        strict  approach 
+            Add explicit constraints requiring search execution for all planned tasks 
+
+Example system prompt enhacement 
+
+    You are a deep research agent responsible for executing comprehensive research tasks.
+
+    TASK EXECUTION RULES:
+    - For each search task you create, you MUST either:
+    1. Execute a web search and document findings, OR
+    2. Explicitly state why the search is unnecessary and mark it as completed with justification
+
+    - Do NOT skip tasks silently or make assumptions about task redundancy
+    - If you determine tasks overlap, consolidate them BEFORE execution
+    - Update task status in the spreadsheet after each action
+
+
+    issue 2: Lack of debugging visisbility 
+
+    Problem 
+        Without proper logging andd state tracking it is difficult to understand why the agent made certain decisions.
+    Solution 
+        For this example, it helps to implement a task management system using a spreedsheet or text file (for simplicity) with the following fields.
+            Task ID 
+            search query 
+            Status (todo, in-progress, completed)
+            results summary 
+            timestamp 
+             
+        The visibility enables 
+            Real-time debugging of agnet decisions 
+            Understanding of task execution flow
+            Identification of behavioral patterns 
+            Data for iterative improvements
+
+
+CONTEXT ENGINEERING BEST PRACTICES 
+
+Based on this case study, here are key principles for effective context engineering 
+
+    Eliminate Prompt Ambugity 
+
+    Bad example 
+        Perform research on the given topic.
+    Good example 
+        Perform research on the given topic by:
+        1. Breaking down the query into 3-5 specific search subtasks
+        2. Executing a web search for EACH subtask using the search_tool
+        3. Documenting findings for each search in the task tracker
+        4. Synthesizing all findings into a comprehensive report
+
+    Make expectations explicit 
+
+    Don't assume the agent knows what you want. Be expliicit about:
+        Required vs optional actions 
+        Quality standards 
+        Output formats 
+        Decision-making criteria 
+
+    Implement observability 
+
+    Build debugging mechanismms into your agentic system 
+        Log all agent decision and reasoning 
+        Track state changes in external storage 
+        Record tool calls and their outcomes 
+        capture errors and edge cases
+
+    Iterate Based on behavior 
+
+    context engineering is an iterative process
+        Deploy the agent with initial context 
+        Observe actual behaviour in production 
+        Identify deviations from expected behaviour
+        refine system prompts and constraintstest and validate improvements
+        repeat 
+
+    Balance flexibilty and constraints 
+
+    consider the tradeoff between 
+        Strict constraints: more predictability but less adaptable
+        flexible guideline: more adaptable but potentially inconsistent 
+    Choose based on your use case requirements 
+
+ADVANCED CONTEXT ENGINEERING TECHNIQUES 
+
+LAYERED CONTEXT ARCHITECTURE 
+    Context engineering applies to all stages of the AI agent build process.
+    Depending on the AI agent, it's sometimes helpful to think of ontext as a hierarchical structure 
+    For our basic agentic system, we can organize context into hierarchical layers
+        System layer Core agent indentity and capabilities 
+        Task layer Specific instructions for the current task 
+        Tool layer Descriptions and usage guidelines for each tool 
+        Memory layer Relevant historical context and learnings
+
+DYNAMIC CONTEXT ADJUSTMENT
+    Another approach is to dynamically adjust context based on the task complexity, available resources, previous execution history, and error patterns.
+    Based on our example, we can adjust  context based on;
+        task complexity 
+        Available resources 
+        Previous execution history 
+        Error patterns 
+
+CONTEXT VALIDATION 
+    Evaluation is key to ensuring context engineering tichniques are working as they should for your AI agents.
+    Before deployment, validate your context design:
+        Completeness Does it cover all important scenarios? 
+        Clarity Is it unaumbiguous?
+        Consistency Do different parts align?
+        testability Can you verify the behaviour?
+
+COMMON CONTEXT ENGINEERING PITFALLS
+    Below are a few common context engineering pitfalls to avoid when building AI agents:
+
+    Over constraint
+        Problem 
+        Too many riules make tha agent inflexible and unable to handle edge cases.
+        Example 
+                NEVER skip a search task.
+                ALWAYS perform exactly 3 searches.
+                NEVER combine similar queries.
+
+        Better approach 
+            Aim to perform searches for all planned tasks. If you determine that tasks are redundant, consolidate them before execution and document your reasoning.
+
+    Under Specification 
+        problem 
+            Vague instructions lead to unpredictable behaviour
+        Example 
+            Do some research and create a report.
+        Best Approach 
+            Execute research by:
+                1. Analyzing the user query to identify key information needs
+                2. Creating 3-5 specific search tasks covering different aspects
+                3. Executing searches using the search_tool for each task
+                4. Synthesizing findings into a structured report with sections for:
+                - Executive summary
+                - Key findings per search task
+                - Conclusions and insights
+
+    Ignoring Error cases 
+        Problem 
+            context dosen't specify behaviour when things go wrong.
+        Solution 
+            In some cases, it helps to addd handling instructions to your AI agents
+            ERROR HANDLING:
+            - If a search fails, retry once with a rephrased query
+            - If retry fails, document the failure and continue with remaining tasks
+            - If more than 50% of searches fail, alert the user and request guidance
+            - Never stop execution completely without user notification
+
+
+MEASURING CONTEXT ENGINEERING SUCCESS
+
+Track this metrics to evaluate context engineering effectivenss
+    Task  completion rate 
+        percentage of tasks completed successfully
+    Behavioural consistency 
+        Similarity of agent behaviour across similar inputs
+    Error rate 
+        Frequency of failure and unexpected behaviours 
+    User satisfaction 
+        Quality and usefulness of outputs 
+    user satisfaction 
+        Quality and usefulness of outputs 
+    Debugging 
+        time required to identify and fix issues 
+
+It's important to not treat context engineering as one time activity but an ongoing practice that requires 
+    Systematic observation of agent behaviour 
+    Careful analysis of failures and edge cases
+    Iterative refinement of instructiona and constraints 
+    Rigourous tsting of changes 
+    
+
+
