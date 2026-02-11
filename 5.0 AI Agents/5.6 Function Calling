@@ -1,0 +1,88 @@
+Function calling (also known as tool calling) is one of the core capabilities that powers modern LLM based agents.
+Understanding how function calling works behind the scene is essential for building effective AI agents and debugging them when things go wrong.
+
+    WHAT IS FUNCTION CALLING 
+
+    At its core, function calling enables LLMs to interact with external tools, APIs, and knowledge bases.
+    When a LLM receives a query that requirs information or actions beyond its training data, it can decide to call an external function to retrieve that information or perform that action.
+
+    Consider a simple example 
+        If you ask an AI agent "Whats is the weather in paris?", the LLM alone cannot answer this question accurately since it doesn't have access to real time weather data.
+    However with function calling, the LLM can recognize that it needs to call a weather API, generate the appropiate function call with the correct parameters, and then use the returned data to formulate a response.
+
+How function calling powers AI Agents 
+    LLM based agents rely on two key capabilities to solve complex tasks: tool calling and reasoning.
+    These capabilities allow agents to be augmented with external tools, connect to MCP(model context protocol) servers, and access knowledge bases.
+    The function calling flow works as follows:
+        User query 
+            The user sends a request to the agent (e.g "what is the weather in paris")
+        Context Assembly 
+            The system message, tool definations,a nd user message are combined to form the complete context sent to the model
+        tool decision 
+            The LLM analyzes the context and determines whether it needs to call a tool. If yes, it outputs a structured response indicating which tool to call and with parameters
+        Observation 
+            The tool returns its results, which became the "observation" in agnet terminology 
+        Response Generation 
+            The observation iss passed back to the model along with all prior messages, allowing it to generate a final response 
+
+    The key insight here is that the model always maintains full context of everything that has happened in the conversation.
+    This context awareness is what enables the agent to make intelligent decisions about whta to do next and how to incoperate tools result into its final response.
+
+The role of tool definations 
+    Tool definatons arguably the most critical component of function calling.
+    A tool defination typically includes:
+        Name A clear identifier for the function 
+        Description An explanation of what tool does and when to use it 
+        parameters The inputs the function accepts, including their types and descriptions 
+        
+    here is an example
+    tools = [
+    {
+            "type": "function",
+            "function": {
+                "name": "get_current_weather",
+                "description": "Get the current weather in a given location. Use this when the user asks about weather conditions in a specific city or region.",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "location": {
+                            "type": "string",
+                            "description": "The city and state, e.g. San Francisco, CA"
+                        },
+                        "unit": {
+                            "type": "string",
+                            "enum": ["celsius", "fahrenheit"],
+                            "description": "The temperature unit to use"
+                        }
+                    },
+                    "required": ["location"]
+                }
+            }
+        }
+    ]
+
+    The description field is particularly important. It helps the model understand not just what the tool does, but when i should be used.
+    When you have multiple tools available, clear and specific descriptions become even more critical for the model to make the right tool selection 
+
+THE AGENT LOOP ACTIONS AND OBSERVATIONS 
+
+Understanding the agent loop is fundamental to debugging and optimizing AI agents. The loop consists of repeated cycle of 
+    Action the agent decides to take an action (call a tool)
+    Enviroment response the external tool or API returns a result 
+    Observation the agent receives and processes the rresult
+    Decision the agent decides whether to take another action or respond to the user 
+
+Lets trace through a concrete example. When you ask an agent "Latest news form OPen AI" heres what happen 
+
+    User: "Latest news from OpenAI"
+    Agent thinks: I need current information about OpenAI news.
+                I should use the web_search tool.
+    Action: web_search(query="OpenAI latest news announcements")
+    Observation: [Search results with recent OpenAI articles...]
+    Agent thinks: I now have the information needed to answer.
+                Let me summarize these results for the user.
+    Response: "Here are the latest updates from OpenAI..."
+
+The observations simply what the Enviroment (in this case, the search enginwe or API) returs after the agent's action.
+This observation becomes part of the context for the next iteration, allowing the agent to build upon what it has learned.
+In more complex scenarios, 
