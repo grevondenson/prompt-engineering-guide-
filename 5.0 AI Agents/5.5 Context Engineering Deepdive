@@ -83,6 +83,125 @@ SYSTEM PROMPT ENGINEERING
             In the actual tool implementation
                 Technical specifications and parameters 
 
+        
+        Example tool instructions 
+
+        The system prompt also includes detailed instructions for using the available tools;
+
+            ## TOOL DESCRIPTIONS
+ 
+            Below are some useful instructions for how to use the available tools. 
+            Deleting tasks: Use the delete_task tool to clear up all the tasks before starting the search plan. 
+            Planning tasks: You will create a plan with the search tasks (3 web searches) and add them to the Google Sheet using the append_update_task tool. Make sure to keep the status of each task updated after completing each search. Each task begins with a todo status and will be updated to a "done" status once the search worker returns information regarding the search task.
+            Executing tasks: Use the Search Worker Agent tool to execute the search plan. The input to the agent are the actual search queries, word for word. 
+            Use the tools in the order that makes the most sense to you but be efficient. 
+
+        Initially, without explicit status definations, the agent would use different status values across runs:
+            Sometimes "pending", sometimes "to-do"
+            Sometimes :completed", sometimes "done", sometimes "finished"
+        Be explicit about allowed values. This eliminates ambiguity and ensures consistent behavior.
+        Note that the system prompt also includes this instructions
+            Use the tools in orderd that makes most sense to you, but be efficient.
+        What's the reasoning behind this decision?
+        This provides flexibility for the agent to optimize its Execution strategy.
+        During test the agent might:
+            Execute only 2 searches instead of 3 if it determines that's sufficient
+            Combines redundant search queries 
+            Skip searches that overlap significantly
+        Here is a specific instruction you can use, if you require all search tasks to be executed:
+            You MUST execute a web search for each and every search task you create.
+            Do not skip any tasks, even if they seem redundant.
+
+    WHEN TO USE FLEXIBLE VS RIGID APPROACHES 
+        Flexible 
+            During development and testing to observe agent decision making patterns
+        Rigid 
+            In production when consistency and completeness are critical 
+
+
+    CONTEXT ENGINEERING ITERATION PROCESS 
+    The iterative nature of improving context
+
+        Context engineering is not a one-time effort. The development process involves:
+            Initial implementation with basic system prompts
+            testing with diverse queries 
+            Identifying issues (missed task, wrong status values, incomplete searches)
+            Adding specific instructions to address each issue 
+            Re-testing to validate improvements 
+            Repeating the cycle
+
+    What is still missing 
+    Even after multiple iterations, there are opportunities for futher improvement:
+        Search task metadata
+            Augmenting search queries 
+            Search type (web search, news search, academic search)
+            Time period filters (today, last week, past month, past year)
+            Domain focus (technology, science, health)
+            priority levels for task execution order.
+
+        Enhanced search planning
+            More detailed instructions on how to generate search tasks 
+            Prefered formats for search queries 
+            Guidelines for breaking down complex queries 
+            Examples of good vs bad search task decomposition
+
+        Data range specification 
+            Start date and end date for time-bounded searches 
+            Format specification for data parameters
+            logic for inferring data ranges from time period keywords
+
+    Based on the recommended improvements, it's easy to appreciate that web search for AI agents is a challenging effort that requires alot of context engineering
+
+
+    ADVANCED CONSIDERATIONS 
+
+    Sub agent communictaion
+        When designing multi agent systems, carefully consider:
+            What information does the sub-agent need?
+                For the search work just the search query text 
+                not the full context or task metadata 
+                Keep sub-agent inputs minimal and focused
+            
+            What information should the sub-agent return?
+                Search result and relevant findings
+                error states or failure conditions 
+                Metadata about the search execution 
+
+    Context length management 
+        As agents execute multiple tasks, context grows:
+            Task history accumulates 
+            Search rsults add tokens 
+            Conversation history expands
+        strategies to manage context length
+            Use seperate agents to isolate context 
+            Implement memory managment tools
+            Summarize long outputs before adding to context 
+            Clear task lists between research queries 
+
+    Error handling in system prompt 
+        Include instructions for failure scenarios
+            ERROR HANDLING:
+            - If search_worker fails, retry once with rephrased query
+            - If task cannot be completed, mark status as "failed" with reason
+            - If critical errors occur, notify user and request guidance
+            - Never proceed silently when operations fail
+
+
+CONCLUSION
+
+    Context engineering is a critical practice for building reliable AI agents that requires:
+        significant iteration time spent tuning prompts 
+        Careful architectural decisions about agent seperation and communication
+        Explicit instructions that eliminate assumption 
+        balance between flexibility and control
+        
+
+
+
+        
+
+
+
             
 
 
