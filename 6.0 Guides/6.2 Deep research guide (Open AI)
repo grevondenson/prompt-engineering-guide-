@@ -1,0 +1,62 @@
+Deep research is OpenAI's new agent that can perform multi step research on the internet for performing complex tasks like generating reports and competitor analysis.
+It is an agentic reasoning system that has access to tools such as Python and web browsing to perform advanced research across a wide range of domains.
+The system is designed ti execute complex multi-step research tasks in significantly less time than a human would typically require, completing tasks in munites insted of hours.
+This model was developed using reinforcement learning RL, training it to browse effectively, reason about complex information, and learn to plan and execute multi step tasks to find the data it needs.
+It posses the ability to backtrack, adapt its plan, and react to ral-time information as needed.
+
+    HOW TO ACCESS OPEN AI RESEARCH 
+        Deep research is currently available to users with pro, plus, teams and enterprise subscriptions
+        Usage limits were expanded in an April update.
+
+    Problem that deep research solve?
+        Deep research can perform complex multi step research tasks much as faster than people can, reducing hours of work to minutes.
+        It is useful for task that require extensive and complex web searches, as it figure sout a sophisticated plan and the search queries needed.
+        Its core process is search + Analyze + synthesize, leading to Report generation, insights and action plans.
+    Deep research use cases
+        Professional applications 
+            Finance Market and compentitive analysis
+            Scientific research and data analysis 
+            Policy and regulatory research 
+            Engineering documentation and analysis 
+        Shopping and consumer research 
+            Detailed product research 
+            Hyper-personalized recommendations
+            In-depth product comparisons
+        Academic analysis 
+            Literature review and comprehensive summaries
+            Generate overviews with findings and discover new insights
+            Identity research gaps 
+            Discover trends and find new recommended new readings
+            Analyzing quantitative outputs and generate intresting discussions
+            Source verification and discovering new evidence 
+            Hypothesis testing?
+        Knowledge work/Engineering
+            Answering complex queries requiring multiple steps 
+            Analyzing uploaded files and documents and augmenting with new research 
+            creating comprehensive reports
+            Developing technical documentation 
+            Conduct feasibility studies 
+            Sythesizing information from multiple sources 
+
+Deep research particularly excels at task that would normally take humans many hours to complete, especially those requiring:
+    Integration of multiplre information sources 
+    Deep analysis of complex data 
+    Creation of well documented reports 
+    Multi step research process 
+    Processing, understanding and reasoning about large amounts of information 
+
+How to decide when to use deep research 
+Use deep search if the task requires multi faced, domain specific queries requiring extensive research for real time information and careful reasoning/understanding about that information.
+
+Deep research limitations
+Several specific limitations and also noted:
+    It's unclear how to make it explicitly search for more online sources (say, like 50 different articles) or scope to specific sources.
+It still produces citation mistakes and formatting errors.
+It's difficult to get information out of deep research
+    Features allowing export tp other formats like Excel, notebooks, notion, Docs or other popular editing software would be great.
+It is not great with time/date-related queries so be as specfic as you can here
+Sources behind paywalls/subscriptions are still not supported
+    Intergrations for this maybe coming in the future 
+Generating and embedding charts is not functional yet 
+    from our experiments (though it can incorporate images), but this is expected to be rolled out evetually.
+    
