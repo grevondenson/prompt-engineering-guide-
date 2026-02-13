@@ -1,0 +1,33 @@
+Most agents stoday are shallow. They easily break down on long, multi-step problems (e.g deep research or agentic coding)
+We are entering the era of "Deep Agents", systems that strategically paln, remeber, and delegate intelligently solving very complex problems.
+
+Here's roughly the core idea beind Deep Agents ( based on my own thoughts and notes that i've gathered)
+
+    PLANNING 
+        Deep agents maintain structured task plans they can update, retry and recover from.
+        Think of it as a living to-do list that guides the agent toward its long-term goal.
+        To experience this, just try out Claude code or codex for planning; the results are significantly better once you enable it before executing any task.
+
+    Orchestrator & Sub agent architecture 
+        This is the most powerful LLM based agentic architectures you can leverage today for any domain you can imagine.
+        An Orchestrator manages specialized sub-agents such as search agents, coders, analyst each with its own clean context and domain focus 
+        The Orchestrator delegates intelligently, and subagents execute efficiently.
+        The Orchestrator integrates their output into a coherent result.
+
+    Context retrieval and Agentic search 
+        Deep agents do not rely on converstaion alone
+        They store intermidiate work in external memory like files, notes, vectors or databases letting thek reference what matters without overloading the model's context.
+        High quality structured memory is a thing of beauty 
+
+    Context Engineering
+        One of the worst thing you can do while working with deep agents is underspecifying instructions/prompts.
+        Prompt Engineering is important.
+        The instructions need to be more explicit, detailed and intentional to define when to plan, when to use sub agent, how to name files, and how to collaborate with humans.
+        It also involves efforts around structured outputs, system prompt optimization, compacting context, evaluating context effectiveness and optimizing tool definations.
+
+    Verification 
+        Next to context Engineering, verification is one of the most important components of an agentic system.
+        verification is basically verifying outputs, ehich can be automated or done by a human.
+        Verification helps making your agents more reliable and more production ready.
+        You can build good verifiers by leveraging systematic evaluation pipelines
+
