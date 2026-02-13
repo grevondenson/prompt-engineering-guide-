@@ -85,4 +85,50 @@ Lets trace through a concrete example. When you ask an agent "Latest news form O
 
 The observations simply what the Enviroment (in this case, the search enginwe or API) returs after the agent's action.
 This observation becomes part of the context for the next iteration, allowing the agent to build upon what it has learned.
-In more complex scenarios, 
+In more complex scenarios, an agent might need multiple tools calls before it can answer a question.
+Each call adds to the context, and the agent uses this accumlate knowledge to make decisions about what to do next.
+
+DEBUGGING FUNCTION CALLS 
+
+When building Ai agents, you'll inevitable encounter situations where the agent doesn't have as expected
+Maybe it's calling the wrong tool, passing incorrect arguments, or failing to call a tool when it should.
+This is where understanding the intervals of function calling becomes invaluable.
+In workflow automation tools like n8n, you can enable "Return intermidiate steps" to see exactly what's happening behind the scenes. This reveals:
+    Which tools were called : The sequence of tool invocations
+    Arguments passed : The exact parameters sent to each tool
+    Observations received : What each tool returned 
+    Token usage : how many tokens each step consumed 
+
+Common issues include 
+    Incorrect tool selection 
+        The model choose the wrong tool for the task 
+    Bad arguments 
+        The model passed incorrect or incomplete parameters
+    Missing context 
+        The tool defination didn't provide enough guidance 
+    Observation handling
+        The model misinterpreted the tool's response 
+
+
+BEST PRACTICES FOR TOOL DEFINATIONS 
+
+based on practical experience building agents, here are key recommendations for effective tool definations:
+    Be specific in descriptions
+    Instead of "search the web", use "search the web for current information.
+    Use this when the user asks about recent events, news, or data that may have changed since training."
+
+    Include usage context in system prompts
+    When tool definations include descriptions, adding explicit guidance in the system prompt about when and how to use tools provides additional context.
+    This may seem repetitive, but it helps the LLM make better decisions, especially with multiple tools.
+
+    Define clear parameter constraints 
+    Use enums when possible to constrain parameter values.
+    Provide examples in descriptions to guide the model.
+
+    Handle tool failures gracefully 
+    Your tools should return informative error messages that help the agent recover or try alternative approaches.
+
+
+
+Fuction calling is the bridge between LLM reasoning and real-world action.
+By understanding how tool definaions shape the models decisions how the agent loop processes actions and observations, and how to dbug the entire flow, you'll be well equipped to build robust AI agents that can effectively leverage external tools to solve complex problems.
