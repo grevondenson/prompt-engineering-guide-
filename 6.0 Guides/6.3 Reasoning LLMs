@@ -1,0 +1,118 @@
+Large reasoning models LRMs or simply, reasoning LLMs are guide explicitly trined to perform native thinking or chain of thought 
+Popular example of this model are Gemini 2.5 pro, Claude 3.7 sonnet and o3
+
+    Top resoning models
+    Below is summary of popular reasoning models, along with features and strengths.
+
+    Reasoning model design patterns and use cases 
+
+        Planning for agentic systems 
+        When building agentis systems, planning is an important component to enable the system to better perform complex tasks.
+        An example, when building deep reserch agentic systems, planning helps in planning the actual searches and guiding the agentic system as it progresses through the task.
+
+        Agentic RAG 
+        Is a system that leverages reasoning models for building agentic RAG applications that involve advanced tool use and reasoning n complex knowledge bases or sources.
+        It can involve leveraging a retrival agent with a reasoning chain/tool to route complex queries/contexts (via tool/function calling) that require complex reasoning.
+
+        LLM as a Judge 
+        When building system that require automated/assessment, LLM as a judge is an option.
+        It leverages the complex understanding and reasoning of large amounts of information.
+        Reasoning LLMs are ideal for this type of use case.
+
+        Visual reasoning 
+        Models like o3 can leverage multi-tool use capabilities to perform advanced visual reasoning and perform task such as reasoning aboout image and even modifying images .
+        The model can reason with images in their chain of thought 
+
+        Other use cases:
+            Finding relationship and answering questions on large, complex datasets in technical domains.
+            reviewing, understanding and debugging large codebase; it's also great in algorithmic development and scientific coding.
+            Scientific tasks that might require advanced mathematical problem solving, experimental design and deeper reasoning 
+            Literature review and synthesis
+            Routine generation for KBs to optimize the step by step instructions for LLMs
+            Data validation to improve the quality and reliability of datasets 
+            Multi step agentic planning 
+            Recognizing and extracting relevant information for QA systems 
+            Knowledge-intensive and ambiguous tasks
+
+Reasoning LLM usage tips 
+General usage patterns and prompting tips 
+
+    Strategic reasoning 
+        Use reasoning models for reasoning heavy models or components for LLM based applications, not for every part of the application.
+        Apply the seperation of concerns (modularize your application) so it is easy to identify where in your application you will find  reasoning useful.
+
+    Inference time scaling (test-time complex)
+        In general the more the compute time the better the performance for most of the reasoning model.
+
+    Thinking time 
+        You can use different reasoning efforts options, such as low for lower cost and faster response, or high for higher thinking time and more tokens, which also results in slower responses.
+        Medium is the balance between accuracy and speed
+
+    Be explicit with instructions 
+        As with other standard chat LLMs, provide reasoning models with clear and explicit instructions for what you want to achieve.
+        It's important to give the model the necessary high-level instructions, constraints and desired output to eliminate any assumptions the model might try to make.
+
+    Avoid manual CoT 
+        Avoid CoT prompting in the instructions.
+        The instructions should be simple and direct.
+        Add response constraints in the instruction whenever applicable 
+
+    Structure Inputs and outputs 
+        It's a good practice to structure your inputs with delimiters
+        You can also leverage structured outputs, especially when building complex agentic applications.
+        We recommend using XML as the defualt mode for structuring generated content unless there is a hard requirment to output the content in JSON.
+
+    Few shot prompting 
+        Add exemplars if you need to meet a desired output that the model is struggling with.
+        Make sure to align these with you high-level instructions to avoid confusion.
+
+    Use descriptive and clear modifiers when instructing the models 
+
+Using hybrid reasoning models 
+    Start simple 
+        Use standard mode first and evaluate the response
+        You can also try using manual chain-of-thought prompt here
+
+    Enable native reasoning
+        If you see mistakes and shallow responses, but you believe the task can benefit from more extensive analysis, then enable thinking 
+        Start with low effort and evaluate the quality of the response
+    
+    Increase thinking time 
+        If low thinking is not enough, switch to medium effort.
+
+    More thinking time 
+        If medium effort is not enough, switch to high effort
+
+    Use few shot prompting 
+        Use demonstrations if you need to improve the style and format of the outputs.
+
+Limitations of reasoning models 
+    Output quality 
+        Reasoning models can sometimes produce mixed-language content, repeated content, inconsistent outputs, formatting issues and low quality output style.
+        Some of this issues can be mitigated by following the prompting best practices for the models. Avoid ambiguous and unnecessary instructions.
+
+    Reasoning affects instruction following 
+        This means that you want to be more careful with how you use CoT, and potentially avoid using it with reasoning models altogether.
+        Mitigation Strategies:
+            few shot in context learning with carefully chosen examples 
+            Self-reflection (models critique and revise their own answers)
+            Self-selective reasoning (model decide when to reason)
+            Clasifier-selective reasoning (an external classifier predicts if reasoning will help)
+
+    Overthinking and underthinking 
+        If not properly prompted models tend to Overthink or underthink
+        You can improve this by being very specific about tasks, processess and expected output format.
+
+    Cost 
+        Reasoning models are significantly more costly than standard chat LLMs, so ensure experimenting with a debugging tool and always evaluate the quality of responses.
+        Track token usage and costs that emerge from inconsistent outputs.
+
+    Latency 
+        Reasoning models are relatively slow and sometime output unnecessary content, which leads tolatency issues.
+        The latency issues can be avoided by more concise prompting.
+        You can also leverage streaming tokens to improve perceived latency, on the application side.
+
+    Poor tool calling and agentic capabilities
+        While reasoning models have improved in multi-tool callin, parallel tool calling might still be an issue.
+        With advanced and more reliable tool calling, this could unlock agentic systems that can take action in the real world.
+        
