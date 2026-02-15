@@ -16,7 +16,7 @@ We can observe that the model has somehow learned how to perform the task by pro
 For more difficult tasks, we can experiment with increasing the demonstrations (e.g, 3-shot, 5-shot, 10-shot)
 
 Let's try out a few examples. 
-Let's first try an example with random laabels (meaning the labels Negative and Positive are randomly assigned to the inputs):
+Let's first try an example with random labels (meaning the labels Negative and Positive are randomly assigned to the inputs):
 
     Prompt
         This is awesome! // Negative

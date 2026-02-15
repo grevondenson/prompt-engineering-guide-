@@ -1,4 +1,4 @@
-Traditional CoT focuses on the language modality. In contast, Multimodal CoT incoperates text and vision into a two stage frameworl.
+Traditional CoT focuses on the language modality. In contast, Multimodal CoT incoperates text and vision into a two stage frameworks.
 The first step involves rationale generation based on multimodal information.
 This followed by the second phase, answer inference, which leverages the infomative generated rationales.
 
@@ -7,7 +7,7 @@ M-CoT prompting extends the standard CoT technique by incorporating information 
     HOW IT WORKS 
     THE TWO STAGE FRAMEWORK 
 
-    Most M-CoT systmes follow a structured pipeline to prevent "hallucinations" (generating incorrect logic)
+    Most M-CoT systems follow a structured pipeline to prevent "hallucinations" (generating incorrect logic)
         Rationale generation 
             The model analyzes a multimodal input (e.g a question + a diagram ) and generates a textual rationale or step by step explanation grounded in the visual evidence.
 

@@ -1,8 +1,8 @@
 One of the most important prompt engineering techniques is to break tasks into its substacks.
-Once the substasks have been isdentified, the LLM is prompted with a substask and then its response is used as in input to another prompt.
+Once the substasks have been is identifing, the LLM is prompted with a substask and then its response is used as in input to another prompt.
 This is what's reffered to as prompt chaining, where a task is split into substasks with the idea to create a chain of prompt operations.
 
-Prompt chaining is useful to accomplish complex tasks which an LLM might struggke to address if prompted with a very detailed prompt.
+Prompt chaining is useful to accomplish complex tasks which an LLM might struggle to address if prompted with a very detailed prompt.
 In prompt chaining, chain prompts perform transformations or additional processes on the generated response before raching a final desired state.
 Prompt chaining is particularly useful when building LLM-powered conversational assistants and improving the personalization and user experience of your applications.
 

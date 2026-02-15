@@ -39,7 +39,7 @@ It posses the ability to backtrack, adapt its plan, and react to ral-time inform
             Sythesizing information from multiple sources 
 
 Deep research particularly excels at task that would normally take humans many hours to complete, especially those requiring:
-    Integration of multiplre information sources 
+    Integration of multiple information sources 
     Deep analysis of complex data 
     Creation of well documented reports 
     Multi step research process 
@@ -53,7 +53,7 @@ Several specific limitations and also noted:
     It's unclear how to make it explicitly search for more online sources (say, like 50 different articles) or scope to specific sources.
 It still produces citation mistakes and formatting errors.
 It's difficult to get information out of deep research
-    Features allowing export tp other formats like Excel, notebooks, notion, Docs or other popular editing software would be great.
+    Features allowing export to other formats like Excel, notebooks, notion, Docs or other popular editing software would be great.
 It is not great with time/date-related queries so be as specfic as you can here
 Sources behind paywalls/subscriptions are still not supported
     Intergrations for this maybe coming in the future 

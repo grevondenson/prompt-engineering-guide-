@@ -1,4 +1,4 @@
-(LLM) Large Language Model
+ (LLM) Large Language Model
 
 -Are functions that map text to text. Given an input string of text, a large language model predicts the text that should come next.
 -They do this by reading a large amount of existing text and learning how words tend to appear in context with other words, and uses what has learned o predict the next most likely word taht might appear in response to a user request, and each subsequent word after that.

@@ -33,7 +33,7 @@ Keep in mind that the authors claim that this is an emergent ability that arises
 
         ZERO SHOT CoT PROMPTING 
     
-    It essentially involves adding "let's think stepby step" to the original prompt.
+    It essentially involves adding "let's think step by step" to the original prompt.
     Let's try an example problem;
 
         prompt
@@ -72,7 +72,7 @@ Keep in mind that the authors claim that this is an emergent ability that arises
         demonstration sampling 
             select a representative question from each cluster and generate its reasoning chain using zero-shot-CoT with simple heuristics.
 
-    The simple heuristicscould be length of questions (e.g 60 tokens) and number of steps in rationale (e.g 5 reasoning steps).
+    The simple heuristics could be length of questions (e.g 60 tokens) and number of steps in rationale (e.g 5 reasoning steps).
     This encourages the model to use simple and accurate demonstrations.
     
 

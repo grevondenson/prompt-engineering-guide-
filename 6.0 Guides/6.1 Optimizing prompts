@@ -22,8 +22,8 @@ Advanced prompting strategies
         Encourae the model to think step by step by explicitly prompting it to break down complex task into intermediate reasoning steps enhances its ability to solve problems that require logical deduction.
     
     ReAct (reason + Act)
-        This model focuses on eliciting aodvanced reasoning, planning, and even tool use from the LLM.
-        By structuring prompts to encourae these capabilities, developers can unlock more sophisticated and powerful applications.
+        This model focuses on eliciting advanced reasoning, planning, and even tool use from the LLM.
+        By structuring prompts to encourage these capabilities, developers can unlock more sophisticated and powerful applications.
 
 CONCLUSION
 Effective prompt design is crucial for harnessing the full potential of LLMs.

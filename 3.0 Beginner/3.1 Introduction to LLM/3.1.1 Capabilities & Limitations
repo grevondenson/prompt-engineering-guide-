@@ -23,6 +23,6 @@
     Context & memory constraints
             Models have a fixed context window and can lose track of information in very long conversations, often treating each interactions as an isolated event.
     Inherent bias 
-            Beccause they learn from internet data, LLMs can produce and amplify societal biases, requiring careful monitoring and saftey filters.
+            Because they learn from internet data, LLMs can produce and amplify societal biases, requiring careful monitoring and saftey filters.
     Lack of genuine understanding 
             LLMs simulate empathy and reasoning through advance autocomplete; they do not posses consciousness or a true understanding of the world.

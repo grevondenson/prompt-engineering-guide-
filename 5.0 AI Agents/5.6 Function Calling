@@ -4,7 +4,7 @@ Understanding how function calling works behind the scene is essential for build
     WHAT IS FUNCTION CALLING 
 
     At its core, function calling enables LLMs to interact with external tools, APIs, and knowledge bases.
-    When a LLM receives a query that requirs information or actions beyond its training data, it can decide to call an external function to retrieve that information or perform that action.
+    When a LLM receives a query that requires information or actions beyond its training data, it can decide to call an external function to retrieve that information or perform that action.
 
     Consider a simple example 
         If you ask an AI agent "Whats is the weather in paris?", the LLM alone cannot answer this question accurately since it doesn't have access to real time weather data.
@@ -17,7 +17,7 @@ How function calling powers AI Agents
         User query 
             The user sends a request to the agent (e.g "what is the weather in paris")
         Context Assembly 
-            The system message, tool definations,a nd user message are combined to form the complete context sent to the model
+            The system message, tool definations, and user message are combined to form the complete context sent to the model
         tool decision 
             The LLM analyzes the context and determines whether it needs to call a tool. If yes, it outputs a structured response indicating which tool to call and with parameters
         Observation 
@@ -69,7 +69,7 @@ THE AGENT LOOP ACTIONS AND OBSERVATIONS
 Understanding the agent loop is fundamental to debugging and optimizing AI agents. The loop consists of repeated cycle of 
     Action the agent decides to take an action (call a tool)
     Enviroment response the external tool or API returns a result 
-    Observation the agent receives and processes the rresult
+    Observation the agent receives and processes the result
     Decision the agent decides whether to take another action or respond to the user 
 
 Lets trace through a concrete example. When you ask an agent "Latest news form OPen AI" heres what happen 
@@ -83,7 +83,7 @@ Lets trace through a concrete example. When you ask an agent "Latest news form O
                 Let me summarize these results for the user.
     Response: "Here are the latest updates from OpenAI..."
 
-The observations simply what the Enviroment (in this case, the search enginwe or API) returs after the agent's action.
+The observations simply what the Enviroment (in this case, the search engine or API) returns after the agent's action.
 This observation becomes part of the context for the next iteration, allowing the agent to build upon what it has learned.
 In more complex scenarios, an agent might need multiple tools calls before it can answer a question.
 Each call adds to the context, and the agent uses this accumlate knowledge to make decisions about what to do next.

@@ -1,4 +1,4 @@
-Large reasoning models LRMs or simply, reasoning LLMs are guide explicitly trined to perform native thinking or chain of thought 
+Large reasoning models LRMs or simply, reasoning LLMs are guide explicitly trained to perform native thinking or chain of thought 
 Popular example of this model are Gemini 2.5 pro, Claude 3.7 sonnet and o3
 
     Top resoning models
@@ -7,7 +7,7 @@ Popular example of this model are Gemini 2.5 pro, Claude 3.7 sonnet and o3
     Reasoning model design patterns and use cases 
 
         Planning for agentic systems 
-        When building agentis systems, planning is an important component to enable the system to better perform complex tasks.
+        When building agentic systems, planning is an important component to enable the system to better perform complex tasks.
         An example, when building deep reserch agentic systems, planning helps in planning the actual searches and guiding the agentic system as it progresses through the task.
 
         Agentic RAG 

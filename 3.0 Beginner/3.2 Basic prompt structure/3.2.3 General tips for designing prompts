@@ -1,7 +1,7 @@
     START SIMPLE 
 
-As you get started with designing prompts, you should keep in mind taht it is really an iterative process taht requiresa lot of experimentation to get optimal results.
-You can start with simple promps and keep adding more elemts  and context as you aim for better rsults. I teration your prompt along hte way is vital for this reason.
+As you get started with designing prompts, you should keep in mind that it is really an iterative process taht requiresa lot of experimentation to get optimal results.
+You can start with simple promps and keep adding more elements  and context as you aim for better results. Iteration your prompt along the way is vital for this reason.
 As you read the guide, you will see many exampples where specificity, and counciseness will often give you better results.
 When you have a big task that involves many diffrent substasks, you can try to break down the task into simpler substasks and keep building up as you get better results.
 This avoids adding too much complexity to the prompt design process at the beginnig.

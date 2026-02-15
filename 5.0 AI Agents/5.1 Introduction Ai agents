@@ -1,4 +1,4 @@
-In his section, we provide an overview of LLM-based agents, including definations, common design patterns, tips, use cases and applications.
+In this section, we provide an overview of LLM-based agents, including definations, common design patterns, tips, use cases and applications.
 
 AI AGENTS - Are autonomus software systems that use reasoning and tools to complete complex tasks on behalf of users.
 Unlike traditional chatbots that merely respond to prompts, agents can plan multi-step workflows, access exernal software, and adapt their behaviour based on real-time feedback.
@@ -22,7 +22,7 @@ These complex tasks often necessitate  access to external tools and information 
 
 for example;
     Developing a marketing strategy might involve reasearching competitors, analzing market trends, and acessing company-specific data.
-These actions necessitatereal-world information, the last insights, and internal company data, which a standalone LLM might not have access to.
+These actions necessitate real-world information, the last insights, and internal company data, which a standalone LLM might not have access to.
 AI agents bridge this gap by combining the capabilities of LLMs with additional features such as memory, planning and external tools.
 
     REAL-WORLD USE cases

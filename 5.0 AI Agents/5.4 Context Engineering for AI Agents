@@ -134,7 +134,7 @@ DYNAMIC CONTEXT ADJUSTMENT
         Error patterns 
 
 CONTEXT VALIDATION 
-    Evaluation is key to ensuring context engineering tichniques are working as they should for your AI agents.
+    Evaluation is key to ensuring context engineering techniques are working as they should for your AI agents.
     Before deployment, validate your context design:
         Completeness Does it cover all important scenarios? 
         Clarity Is it unaumbiguous?
@@ -146,7 +146,7 @@ COMMON CONTEXT ENGINEERING PITFALLS
 
     Over constraint
         Problem 
-        Too many riules make tha agent inflexible and unable to handle edge cases.
+        Too many rules make tha agent inflexible and unable to handle edge cases.
         Example 
                 NEVER skip a search task.
                 ALWAYS perform exactly 3 searches.

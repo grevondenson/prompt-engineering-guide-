@@ -3,7 +3,7 @@ Instead of a user writting a long, static instruction, the policy model creates 
 
 HOW IT WORKS
     Policy model
-         A smaller model trained via Supervised finr tuning or reignforcement learning to producr effective hints.
+         A smaller model trained via Supervised fine tuning or reignforcement learning to produce effective hints.
 
     Directional Stimulus
         discrete tokens (keywords, hints, or instructions) that serve as "GPS" markers for the target LLM.

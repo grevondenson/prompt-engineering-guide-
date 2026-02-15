@@ -16,7 +16,7 @@ It is a neuro-symbolic framework that enhances the reasoning capabilities of LLM
             Off loading math to an interpreter eliminates the "hallucinations" or calculation errors common in LLMs.
 
         Robustness
-            Performs signnificantly better on complex problems (e.g with 7-digt numbers) where traditional models fail.
+            Performs significantly better on complex problems (e.g with 7-digt numbers) where traditional models fail.
 
         Interpretability 
             Provides a clear, auditable trace of the logic used to reach a conclusion.
