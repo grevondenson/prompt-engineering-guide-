@@ -1,0 +1,838 @@
+# 📚 Large Language Models & Prompt Engineering: Comprehensive Guide
+
+This documentation provides a thorough overview of Large Language Models (LLMs), prompt engineering, advanced prompting techniques, and the architecture of AI agents. It covers foundational concepts, best practices, and state-of-the-art methods, using clear explanations, tables, and illustrative code and diagrams. Whether you're new to LLMs or an experienced AI engineer, this guide will help you design, implement, and optimize powerful LLM-driven applications.
+
+---
+
+## 1.1 LLM Introduction
+
+Large Language Models (LLMs) are functions that map text to text. Given an input string, they predict the next most likely word, and then each subsequent word, based on patterns learned from vast text data.
+
+### How LLMs Work
+
+- **Training**: LLMs read huge amounts of text, learning how words appear in context.
+- **Prediction**: For a given prompt, they predict the next best word, building up a response one token at a time.
+
+### How to Control an LLM
+
+The **prompt** is the primary lever for controlling LLM output. There are several prompting styles:
+
+| Prompt Type    | Description                                                | Example                                                                      |
+|----------------|------------------------------------------------------------|------------------------------------------------------------------------------|
+| **Instruction**| Tell the model what you want with a detailed description.  | *Extract the author from the quote below...*                                 |
+| **Completion** | Induce the model to complete the beginning of your text.   | *The author of this quote is ...*                                            |
+| **Scenario**   | Give the model a role or situation to play out.            | *Your role is to extract the author from the following...*                   |
+| **Demonstration** | Show the model what you want via examples.              | *Quote: ... Author: ...*                                                     |
+
+#### Concrete Examples
+
+```plaintext
+Instruction Prompt:
+Extract the name of the author from the quotation below.
+"Some humans theorize that intelligent species go extinct before they can expand into outer space..."
+
+Completion Prompt:
+"Some humans theorize..." — Ted Chiang, Exhalation
+The author of this quote is
+
+Scenario Prompt:
+Your role is to extract the name of the author from any given text...
+```
+
+#### Prompting Tips
+
+- **Be Specific**: If you want a comma-separated list, ask for it.
+- **Provide Context**: Add background, examples, or purpose.
+- **Ask for Reasoning**: Use "Let's think step by step" to encourage detailed reasoning.
+- **Expert Role**: Tell the model to answer as if it were an expert.
+
+---
+
+## 1.2 Terminologies
+
+Understanding the language of prompt engineering and LLMs is crucial.
+
+| Term             | Definition |
+|------------------|------------|
+| **Prompt (Context)** | The text provided to the model to guide its output. |
+| **Hidden Prompts** | Unseen system messages that steer the model, often used in chat applications. |
+| **Tokens**       | The basic units (words, subwords, punctuation) that LLMs process. Different models tokenize text differently. |
+| **Prompt Engineering** | The art and science of crafting, testing, and refining prompts to guide AI models to produce high-quality outputs. |
+
+---
+
+## 2.1 Introduction to Prompt Engineering
+
+Prompt engineering is the emerging discipline focused on developing and optimizing prompts for LLMs to solve a wide range of tasks efficiently.
+
+- **Researchers**: Enhance safety and task performance (QA, reasoning).
+- **Developers**: Design robust prompting techniques to interface LLMs with tools.
+- **This Guide**: Covers both theory and practical aspects, offering best practices and advanced techniques.
+
+---
+
+## 3.1.3 What are LLMs?
+
+**LLMs** are AI systems trained on vast text corpora to generate, understand, and summarize human-like language.
+
+| Use Case            | Example Applications                |
+|---------------------|-------------------------------------|
+| Coding Assistance   | Autocomplete, debugging, code gen   |
+| Content Generation  | Articles, reports, marketing copy   |
+| Translation         | Multilingual communication          |
+| Analysis            | Summarizing, trend detection        |
+| Chatbots            | Virtual assistants, customer support|
+
+**Popular LLMs**: GPT, Gemini, Claude, LLama, Grok, Mistral, Deepseek
+
+---
+
+## 3.1.1 Capabilities & Limitations
+
+### Capabilities
+
+- **Information Synthesis**: Summarize reports, extract key points.
+- **Code Assistance**: Generate, debug code.
+- **Context Generation**: Produce high-quality, brand-consistent text.
+- **Domain Specialization**: Fine-tuned or RAG-enabled for fields like law/health.
+- **Multimodal Reasoning**: Process text, images, and audio together.
+
+### Limitations
+
+- **Hallucinations**: May generate plausible but incorrect info.
+- **Logic & Math Gaps**: Struggle with multi-step reasoning.
+- **Knowledge Cutoff**: No awareness of post-training events.
+- **Context/Memory Limits**: Lose track in long convos.
+- **Bias**: Reflect societal biases in training data.
+- **No True Understanding**: Simulate reasoning, but lack consciousness.
+
+---
+
+## 3.1.2 How LLMs Work
+
+LLMs process text as **tokens** using a **context window** acting as short-term memory to predict new text.
+
+| Component         | Description                                               |
+|-------------------|----------------------------------------------------------|
+| **Tokens**        | Words/punctuation as numerical vectors                   |
+| **Context Window**| Max tokens seen in one interaction (~8K-128K+)           |
+| **Working Memory**| Enables retention of conversation/documents              |
+
+**Context Window Includes:**
+- System instructions
+- User input
+- Conversation history
+- Retrieved data
+- Generated outputs
+
+---
+
+## 3.2.1 Prompting an LLM
+
+A good prompt combines clear instructions, context, and examples. The more context, the better the results.
+
+```plaintext
+Prompt: The sky is
+Output: blue.
+
+Prompt: Complete the sentence: The sky is
+Output: blue during the day and dark at night.
+```
+
+### Prompt Formats
+
+- **QA Format**: 
+  ```
+  Q: What is prompt engineering?
+  A: [Answer]
+  ```
+
+- **Few-shot Format**: 
+  ```
+  Q: [Question 1]? A: [Answer 1]
+  Q: [Question 2]? A: [Answer 2]
+  Q: [Question 3]? A:
+  ```
+
+---
+
+## 3.2.2 Elements of a Prompt
+
+Every prompt can include these elements:
+
+| Element          | Purpose                                                   |
+|------------------|----------------------------------------------------------|
+| Instruction      | Command/task for the model                               |
+| Context          | Additional background or examples                        |
+| Input Data       | The main text or question to solve                       |
+| Output Indicator | Format for the desired result                            |
+
+**Example:**
+```plaintext
+Prompt: Classify the text into neutral, negative, or positive.
+Text: I think the food was okay.
+Sentiment:
+```
+
+---
+
+## 3.2.3 General Tips for Designing Prompts
+
+- **Start Simple**: Begin with a basic prompt, then iterate.
+- **Be Specific**: Explicit instructions yield better results.
+- **Break Down Tasks**: Decompose complex tasks into subtasks.
+- **Instruction Placement**: Place the instruction at the beginning.
+- **Use Clear Separators**: e.g., `### Instruction ###`
+- **"Do" Not "Don't"**: Focus on what to do, not what to avoid.
+- **Iteration is Key**: Experiment, test, and refine.
+
+---
+
+## 3.2.4 Examples of Prompts
+
+| Task Type            | Example Prompt & Output                                        |
+|----------------------|---------------------------------------------------------------|
+| **Summarization**    | *Explain antibiotics* → Short summary of antibiotics          |
+| **Info Extraction**  | *Mention the LLM product in this text...* → "ChatGPT"         |
+| **Question Answering**| *What was OKT3 sourced from?* → "Mice"                       |
+| **Classification**   | *Classify the text: I think the food was okay.* → "Neutral"   |
+| **Conversation**     | *AI assistant role* → Tailored responses based on instruction |
+| **Code Generation**  | */* Ask user for name and greet */* → JavaScript greeting     |
+| **Reasoning**        | *Odd numbers sum to even?* → Stepwise reasoning               |
+
+---
+
+## 4.01 Zero-shot Prompting
+
+The **zero-shot prompt** instructs the model directly—without examples.
+
+**Example:**
+```plaintext
+Prompt: Classify the text into neutral, negative or positive.
+Text: I think the vacation is okay.
+Sentiment:
+Output: neutral
+```
+
+- No examples are provided; LLM relies on its pretrained knowledge.
+- If zero-shot fails, **few-shot** prompting with examples is recommended.
+
+---
+
+## 4.02 Few-shot Prompting
+
+Few-shot prompting employs examples (demonstrations) to guide the LLM.
+
+**Example:**
+```plaintext
+Prompt:
+A "whatpu" is a small, furry animal native to Tanzania.
+An example of a sentence that uses the word whatpu is:
+We were traveling in Africa and we saw these very cute whatpus.
+
+To do a "farduddle" means to jump up and down really fast.
+An example of a sentence that uses the word farduddle is:
+Output: When we won the game, we all started to farduddle in celebration.
+```
+
+- More examples can improve accuracy for complex tasks.
+- **Limitation**: Not always reliable for tasks with deeper reasoning; may need advanced techniques like CoT.
+
+---
+
+## 4.03 CoT (Chain-of-Thought) Prompting
+
+CoT prompting enables the model to show intermediate reasoning steps.
+
+### How it Works
+
+- Combine with few-shot to improve performance on complex reasoning tasks.
+- Model demonstrates how to break down and solve a problem step by step.
+
+**Example:**
+```plaintext
+Prompt: The odd numbers in this group add up to an even number: 4, 8, 9, 15, 12, 2, 1.
+A: Adding all the odd numbers (9, 15, 1) gives 25. The answer is False.
+```
+
+#### Zero-shot CoT
+
+- Add "Let's think step by step" to prompt more reasoning.
+
+```plaintext
+Prompt: I bought 10 apples, gave away 2, bought 5 more, ate 1. How many left? Let's think step by step.
+Output: ...10-2-2+5-1=10 apples.
+```
+
+#### Automatic CoT (Auto-CoT)
+
+- Uses clustering and representative sampling to create diverse, high-quality demonstrations.
+
+---
+
+## 4.04 Meta Prompting
+
+Meta prompting focuses on the structure and syntax of problems rather than content.
+
+**Key Features:**
+- Syntax-focused templates
+- Abstracted examples, not specific content
+- Token efficient
+- Fair comparison between models
+- Useful for complex reasoning, math, coding, theoretical queries
+
+---
+
+## 4.05 Self-consistency
+
+Boosts CoT by sampling multiple reasoning paths and selecting the most consistent answer.
+
+**Process:**
+1. Generate diverse CoT reasoning paths.
+2. Select the most consistent answer.
+
+**Example:**
+```plaintext
+Q: When I was 6, my sister was half my age. Now I'm 70, how old is my sister?
+Output 1: 67
+Output 2: 67
+Output 3: 35
+```
+- Selecting the majority answer improves reliability.
+
+---
+
+## 4.06 General Knowledge Prompting
+
+Incorporates factual knowledge to improve LLM predictions.
+
+**Process:**
+1. Generate knowledge statements.
+2. Integrate knowledge into prompts.
+3. Guide answer format for better accuracy.
+
+**Example:**
+```plaintext
+Input: Part of golf is trying to get a higher point total than others.
+Knowledge: The objective of golf is to play a set of holes in the least number of strokes.
+```
+
+---
+
+## 4.07 Prompt Chaining
+
+Breaks complex tasks into subtasks. Each subtask's output becomes input for the next—especially useful for document QA and assistants.
+
+```mermaid
+flowchart TD
+    Start[Start Task]
+    Subtask1[Subtask 1 Prompt]
+    Subtask2[Subtask 2 Prompt]
+    Subtask3[Subtask 3 Prompt]
+    End[Final Output]
+
+    Start --> Subtask1 --> Subtask2 --> Subtask3 --> End
+```
+
+- Enables LLMs to handle complexity by sequential processing.
+
+---
+
+## 4.08 Tree of Thoughts (ToT)
+
+A generalization of CoT, ToT explores multiple reasoning paths as a tree (using BFS/DFS), allowing backtracking and lookahead.
+
+**Example Prompt:**
+> Imagine three experts answer this question. All write 1 step at a time, then share...
+
+**Benefits:** Systematic exploration, error correction, deeper reasoning.
+
+---
+
+## 4.09 Retrieval Augmented Generation (RAG)
+
+RAG fuses information retrieval with text generation, grounding responses in real-time data.
+
+**How It Works:**
+- Retrieve relevant documents (e.g., from Wikipedia)
+- Concatenate with original input as context
+- Generate output
+
+| Benefit        | Description                                     |
+|----------------|------------------------------------------------|
+| Accuracy       | Reduces hallucinations                          |
+| Cost Effective | No need to retrain LLMs for new information     |
+| Context-aware  | Answers based on up-to-date data                |
+
+**Use Cases:** Enterprise search bots, customer service, policy queries, documentation updates.
+
+```mermaid
+flowchart LR
+    UserInput[User Input]
+    Retriever[Retriever (e.g. Wikipedia)]
+    Context[Context (input + docs)]
+    Generator[Text Generator]
+    Output[Final Output]
+
+    UserInput --> Retriever
+    Retriever --> Context
+    Context --> Generator
+    Generator --> Output
+```
+
+---
+
+## 4.10 ART (Automatic Reasoning and Tool use)
+
+ART enables LLMs to select reasoning steps and call external tools (search, calculator, API) mid-generation.
+
+- **Demo Selection**: From task library
+- **Pauses**: Integrates external tool outputs
+- **Extensible**: Humans can add/fix tools and steps
+- **Improves**: Performance on unseen tasks and with human feedback
+
+---
+
+## 4.11 Automatic Prompt Engineering (APE)
+
+APE automates instruction generation and selection for improved zero-shot and CoT prompting.
+
+**Techniques:**
+- **Meta-prompting**: LLM as prompt engineer
+- **Optimization by prompting (OPRO)**: Hill-climb on past prompt scores
+- **Gradient-based prompting**: Optimize prompt vectors
+- **Exemplar selection**: Find best few-shot examples
+
+**Why it Matters:**
+- Superior performance
+- Efficient development
+- Discovery of new prompting techniques
+
+---
+
+## 4.12 Active-prompt
+
+Active-prompt dynamically adapts exemplars (few-shot examples) for task-specific reasoning, focusing on tasks where the model is uncertain.
+
+**Workflow:**
+1. **Uncertainty Estimation**: Prompt model with multiple unlabeled questions
+2. **Selection**: Find questions with most diverse answers
+3. **Human Annotation**: Only for high-uncertainty cases
+4. **Deployment**: Use curated exemplars for future tasks
+
+**Comparison with APE:**
+- APE automates instruction text
+- Active-prompt automates example selection with human refinement
+
+---
+
+## 4.13 Directional Stimulus Prompting
+
+Uses a small policy model to generate hints ("stimuli") that nudge a frozen LLM in a desired direction.
+
+**How it Works:**
+- **Policy Model**: Trained to generate effective hints
+- **Directional Stimulus**: Keywords or instructions
+- **Target LLM**: Receives stimulus, generates response
+
+**Benefits:**
+- Fine-grained control
+- Efficient (smaller policy model)
+- Outperforms standard prompts in summarization/dialogue
+
+---
+
+## 4.14 PAL (Program-aided Language Models)
+
+PAL offloads reasoning steps to an external program (e.g., a Python interpreter).
+
+**How PAL Works:**
+1. **Decomposition**: LLM breaks problem into code steps.
+2. **Execution**: Code is run in an interpreter for the final answer.
+
+```python
+# Example date calculation using PAL
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+
+today = datetime(2023, 2, 27)
+born = today - relativedelta(years=25)
+print(born.strftime("%m/%d/%Y"))
+```
+
+**Advantages:**
+- Accurate computation
+- Robust on complex problems
+- Interpretable and auditable
+- Efficient (smaller models outperform pure LLMs)
+
+---
+
+## 4.15 ReAct Prompting
+
+ReAct combines **reasoning** and **acting**—allowing LLMs to interact with external tools during reasoning.
+
+**How it Works:**
+- LLM generates reasoning traces ("Thought")
+- Decides on external action ("Action")
+- Integrates results ("Observation")
+- Repeats until task is complete
+
+**Example Trajectory:**  
+1. Thought: Need to search X  
+2. Action: Search[X]  
+3. Observation: [Result]  
+4. (Repeat as needed)  
+
+**LangChain Example:**  
+- Use OpenAI LLM, search API, and math tool
+- Run: `agent.run("Who is Olivia Wilde's boyfriend? What is his current age raised to the 0.23 power?")`
+
+**Benefits:**  
+- Reliable, factual responses
+- Improved interpretability
+- Combines internal and external knowledge
+
+---
+
+## 4.16 Reflexion
+
+Reflexion allows agents to **learn from linguistic feedback** (self-reflection) to improve over time.
+
+**Process:**
+1. Define a task
+2. Generate trajectory
+3. Evaluate and reflect
+4. Generate next trajectory using memory/feedback
+
+**When to Use:**
+- When agents must learn via trial/error
+- When RL is impractical
+- When nuanced feedback is critical
+
+**Limitations:**  
+- Relies on quality of self-evaluation  
+- Long-term memory constraints  
+- Some code generation limitations  
+
+---
+
+## 4.17 Multimodal CoT Prompting
+
+Combines text and vision for step-by-step reasoning.
+
+**Two-stage Framework:**
+1. **Rationale Generation**: Explain using multimodal input (text + image)
+2. **Answer Inference**: Combine rationale with input for final answer
+
+**Applications:**  
+- Science diagrams  
+- Medical analysis  
+- Technical troubleshooting  
+- Autonomous navigation
+
+**Benefits:**  
+- Improved accuracy  
+- Traceable reasoning path
+
+**Limitations:**  
+- Higher computational cost  
+- Small models may overthink cues
+
+---
+
+## 4.18 Graph Prompting
+
+Graph prompting structures information as nodes and edges, guiding LLM reasoning over complex relationships.
+
+| Approach            | Description                                   |
+|---------------------|-----------------------------------------------|
+| **Graph-of-Thought**| Internal reasoning as a non-linear graph      |
+| **Graph Prompt Learning** | Adds/learns prompts for graph models    |
+
+**Key Applications:**  
+- Knowledge graphs  
+- Biological networks  
+- Recommendations  
+- Logistics
+
+---
+
+## 5.1 Introduction to AI Agents
+
+AI agents are **autonomous systems** leveraging LLMs, memory, and tools to complete complex, multi-step tasks.
+
+### Core Components
+
+| Component | Purpose |
+|-----------|---------|
+| **LLM (Brain)** | Reasoning and decisions |
+| **Memory** | Tracks progress and history |
+| **Tools** | APIs, code execution, web browsing |
+
+### Why Build Agents?
+
+- LLMs alone can't handle complex workflows.
+- Agents plan, access real data, and adapt to feedback.
+
+### Use Cases
+
+- Finance, engineering, customer support, gig economy, booking, research, e-commerce.
+
+### Types of Agents
+
+- **Reflex**: Simple triggers (e.g., thermostat)
+- **Goal-based**: Plans to meet goals (e.g., travel agent)
+- **Utility-based**: Maximizes value (e.g., trading bot)
+- **Multi-agent**: Several agents collaborating
+
+---
+
+## 5.2 Agent Components
+
+Agents combine three core abilities:
+
+1. **Planning (LLM Brain)**
+    - Task decomposition, self-reflection, adaptive learning
+
+2. **Tool Utilization**
+    - Code execution, web search, math, image tools
+
+3. **Memory Management**
+    - Short-term: Immediate context (conversation)
+    - Long-term: Vector stores, recall for future tasks
+
+```mermaid
+flowchart TD
+    Planning[Planning - LLM]
+    Tools[Tools Utilization]
+    Memory[Memory Systems]
+    EffectiveAgent[Effective AI Agent]
+
+    Planning --> EffectiveAgent
+    Tools --> EffectiveAgent
+    Memory --> EffectiveAgent
+```
+
+---
+
+## 5.3 AI Workflows vs AI Agents
+
+| Approach       | Description                                 | Best for                  |
+|----------------|---------------------------------------------|---------------------------|
+| **AI Workflows** | Predefined, structured steps (prompt chaining, routing, parallel) | Predictable, controlled tasks |
+| **AI Agents**    | Dynamic, autonomous, adaptive, reasoning   | Open-ended, complex, adaptive |
+
+**Hybrid Systems** use workflows for structure and agents for flexibility.
+
+---
+
+## 5.4 Context Engineering for AI Agents
+
+**Context Engineering** is crafting the environment (prompts, instructions, constraints) that guides agent behavior.
+
+**Best Practices:**
+- Eliminate ambiguity
+- Make expectations explicit
+- Build observability (logging, task tracking)
+- Iterate and refine
+- Balance flexibility vs. constraints
+
+```mermaid
+flowchart TD
+    Context[Context Engineering]
+    Agent[AI Agent]
+    Success[Success Metrics]
+    Context --> Agent --> Success
+```
+
+---
+
+## 5.5 Context Engineering Deep Dive
+
+**Building Deep Research Agents** requires careful, iterative context engineering.
+
+- **Agent Architecture**: Prefer multi-agent over single-agent for reliability.
+- **System Prompt Design**: Be explicit, include tool definitions, workflow, and error handling.
+- **Iterative Process**: Test, observe, refine system instructions and tool descriptions.
+
+---
+
+## 5.6 Function Calling
+
+Function (tool) calling allows LLMs to interact with the real world by invoking APIs or external functions.
+
+### Workflow
+
+1. **User Query**
+2. **Context Assembly** (system message + tool definitions)
+3. **Tool Decision** (LLM selects tool and params)
+4. **Observation** (tool returns result)
+5. **Response Generation** (LLM integrates result)
+
+**Best Practices:**
+- Be specific in tool descriptions
+- Define clear parameter constraints
+- Handle tool failures gracefully
+
+```python
+tools = [
+  {
+    "type": "function",
+    "function": {
+      "name": "get_current_weather",
+      "description": "Get the current weather for a given location.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "location": {"type": "string", "description": "City, State"},
+          "unit": {"type": "string", "enum": ["celsius", "fahrenheit"], "description": "Temperature unit"}
+        },
+        "required": ["location"]
+      }
+    }
+  }
+]
+```
+
+---
+
+## 5.7 Deep Agents
+
+"Deep Agents" represent the next generation—capable of multi-step planning, memory, delegation, and verification.
+
+- **Planning**: Maintain, update, retry plans
+- **Orchestrator & Subagents**: Divide tasks for robustness
+- **Memory**: Store work externally for reference
+- **Context Engineering**: Explicit, structured, continual tuning
+- **Verification**: Systematic output checking, human or automated
+
+---
+
+## 6.1 Optimizing Prompts
+
+**Prompt Optimization Tips:**
+
+- **Specify Desired Output**: Be clear and unambiguous
+- **Structure Inputs/Outputs**: Use JSON, XML, or other formats
+- **Decompose Tasks**: Break down large tasks into smaller ones
+- **Leverage Advanced Techniques**: Few-shot, CoT, ReAct
+
+---
+
+## 6.2 Deep Research Guide (OpenAI)
+
+OpenAI's Deep Research Agent can perform sophisticated, multi-step research using web browsing and Python tools.
+
+**Strengths:**
+- Executes complex research in minutes
+- Uses search + analyze + synthesize → reports & insights
+- Trained via reinforcement learning, adapts and backtracks
+
+**Use Cases:**
+- Finance, science, policy, shopping, academic analysis, technical docs
+
+**Limitations:**
+- Difficulty with date/time, paywalled sources, exporting results
+
+---
+
+## 6.3 Reasoning LLMs
+
+**Reasoning LLMs** (e.g., Gemini, Claude) are designed for step-by-step logical tasks.
+
+**Design Patterns:**
+- Planning for agentic systems
+- Agentic RAG (retrieval + reasoning)
+- LLM as a Judge
+- Visual reasoning
+
+**Usage Tips:**
+- Use for reasoning-heavy tasks
+- Structure inputs/outputs (XML recommended)
+- Add exemplars for complex outputs
+- Avoid ambiguous instructions
+- Mind cost and latency
+
+---
+
+## 6.4 Context Engineering
+
+**Context Engineering**: The evolution from prompt engineering, focusing on constructing the *entire* context for optimal LLM performance.
+
+- Not just better prompts, but filtering noise, structuring data, and rigorous evaluation.
+- Includes context for multimodal, memory, tools, and state.
+
+**Example Subagent Prompt Structure:**
+
+```yaml
+- id: subtask_1
+  query: "Find latest research on topic X"
+  source_type: "academic"
+  time_period: "past_year"
+  domain_focus: "science"
+  priority: 1
+  start_date: "2024-06-03T06:00:00.000Z"
+  end_date: "2024-06-11T05:59:59.999Z"
+```
+
+---
+
+# 🎨 Visual Guide: LLM Application Architecture
+
+```mermaid
+flowchart TD
+    UserInput[User Input]
+    PromptEng[Prompt Engineering]
+    LLM[Large Language Model]
+    ToolCalls[Function/Tool Calls]
+    ExternalAPIs[APIs, DBs, Search]
+    Memory[Memory/Context Store]
+    Output[Final Output]
+
+    UserInput --> PromptEng
+    PromptEng --> LLM
+    LLM --> ToolCalls
+    ToolCalls --> ExternalAPIs
+    LLM --> Memory
+    ExternalAPIs --> LLM
+    Memory --> LLM
+    LLM --> Output
+```
+
+---
+
+# 🧩 Key Takeaways
+
+```card
+{
+    "title": "Prompt Engineering Matters",
+    "content": "Every detail in your prompt—clarity, structure, and context—directly impacts LLM performance. Iterate and experiment."
+}
+```
+
+```card
+{
+    "title": "Decompose for Success",
+    "content": "Break large problems into smaller subtasks using prompt chaining, CoT, or multi-agent architectures."
+}
+```
+
+```card
+{
+    "title": "Context is King",
+    "content": "Carefully engineered context (instructions, memory, tools) is crucial for reliable and robust AI agents."
+}
+```
+
+---
+
+# 🚦 Next Steps
+
+- Experiment with different prompting techniques
+- Try multi-agent and prompt chaining architectures
+- Leverage context engineering for robust, scalable AI solutions
+
+---
+
+> **Happy Prompting!** 🚀
